@@ -11,11 +11,33 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c613918-0516-425d-a952-3cb7dd8b7736" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9c613918-0516-425d-a952-3cb7dd8b7736" name="Default Changelist" comment="Added main classes">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/caslarui.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Strategy.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Strategy.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Ability.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Ability.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Game.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Map/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Map/Map.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Map/Map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Map/Map.hpp" afterDir="false" />
     </list>
@@ -43,6 +65,7 @@
       </set>
     </option>
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="1TzCKMZ32yH94yR6XFOsFoikmRw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -87,7 +110,7 @@
       <workItem from="1574453472663" duration="1591000" />
       <workItem from="1574852685047" duration="19000" />
       <workItem from="1576502165080" duration="155000" />
-      <workItem from="1576502659106" duration="10174000" />
+      <workItem from="1576502659106" duration="20471000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1576580103689</created>
@@ -110,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576581026902</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added main classes">
+      <created>1576582487237</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576582487237</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

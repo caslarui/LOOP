@@ -5,10 +5,8 @@
 #ifndef LOOP_GAME_HPP
 #define LOOP_GAME_HPP
 
-//#include <string>
-//#include <cstdlib>
-//#include <iostream>
 #include <fstream>
+#include <iostream>
 
 #include "Map/Map.hpp"
 #include "Characters/Heroes/Hero.hpp"
@@ -21,6 +19,9 @@ public:
     void start();
     void finish();
     void update();
+
+private:
+    std::vector<Hero*> Heroes;
 };
 
 

@@ -6,6 +6,7 @@
 #define LOOP_MAP_HPP
 
 #include <vector>
+#include <utility>
 
 
 class Map {
@@ -13,6 +14,7 @@ public:
     int     getMm() const;
     int     getMn() const;
     static Map *   getInstance();
+    const std::vector<std::vector<char>> &getMMap() const;
 
     void setMMap(std::vector<std::vector<char>>);
     void setMm(int);

@@ -1,8 +1,6 @@
 //
 // Created by caslarui on 16.12.2019.
 //
-#include <iostream>
-#include <fstream>
 #include "Game.hpp"
 
 Game::Game(const std::string & inputPath) {
@@ -27,6 +25,30 @@ Game::Game(const std::string & inputPath) {
         // Setam in clasa singleton M-ul
         Map::getInstance()->setMm(_m);
 
+        // Initializam un obiect temporar pentru harta
+        std::vector<std::vector<char>> tmp(_n, std::vector<char>(_m));
+        char c;
+
+        // Citim caracter cu caracter si inscriem in obiectul temporar
+        for (int i = 0; i < _n; ++i) {
+            for (int j = 0; j < _m; ++j) {
+               in >> c;
+               tmp[i][j] = c;
+            }
+        }
+
+        // Copiem din obiectul temporar in cel global
+        Map::getInstance()->setMMap(tmp);
+        // Stergem informatia din vectorul temporar.
+        tmp.erase(tmp.begin(), tmp.end());
+
+        // Citim numarul de eroi.
+        int _p;
+        in >> _p;
+
+        for (int i = 0; i < _p; ++i) {
+
+        }
 
     }
     catch (const std::exception & e) {
