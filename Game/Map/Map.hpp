@@ -5,24 +5,24 @@
 #ifndef LOOP_MAP_HPP
 #define LOOP_MAP_HPP
 
+#include <vector>
+
 
 class Map {
 public:
     int     getMm() const;
     int     getMn() const;
-    Map *   getInstance();
+    static Map *   getInstance();
 
-    void setMMap(char **mMap);
-
-    void setMm(int mM);
-
-    void setMn(int mN);
+    void setMMap(std::vector<std::vector<char>>);
+    void setMm(int);
+    void setMn(int);
 
 private:
-    Map     *instance = nullptr;
+    static Map* instance;
     Map();
 
-    char**  mMap;
+    std::vector<std::vector<char>>  mMap;
     int     mM;
     int     mN;
 };
