@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <queue>
 
 #include "Map/Map.hpp"
 #include "Characters/Heroes/Hero.hpp"
@@ -21,7 +22,12 @@ public:
     void update();
 
 private:
+    void heroStats();
+
     std::vector<Hero*> mHeroes;
+    std::queue<char> mMovesBuffer;
+    int mRounds;
+
 };
 
 

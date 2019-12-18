@@ -10,8 +10,9 @@ void Knight::attack(const Hero &enemy) {
 
 }
 
-std::ostream &operator<<(std::ostream os, const Knight& other) {
-
+std::ostream &operator<<(std::ostream& os, const Knight& other) {
+    os << "Knight{ " << other.mCoords.getMx() << " : " << other.mCoords.getMy() << " }\n";
+    return os;
 }
 
 //Knight& Knight::operator=(const Knight& other) {

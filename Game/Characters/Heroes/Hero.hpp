@@ -6,6 +6,7 @@
 #define LOOP_HERO_HPP
 
 #include <vector>
+#include <ostream>
 
 #include "Ability.hpp"
 #include "../Attributes/Coords.hpp"
@@ -20,7 +21,6 @@ public:
     bool collide(const Hero&);
     const Coords &getMCoords() const;
     const Effects &getMEffect() const;
-//    std::vector<Ability *> &getMAbility();
     void setStrategy(Strategy&);
 
 public:

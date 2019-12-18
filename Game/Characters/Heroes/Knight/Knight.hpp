@@ -15,7 +15,7 @@ public:
 
     void attack(const Hero &) override;
 
-    friend std::ostream&operator<<(std::ostream, const Knight&);
+    friend std::ostream&operator<<(std::ostream&, const Knight&);
 };
 
 

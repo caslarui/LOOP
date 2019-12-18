@@ -13,6 +13,7 @@ public:
     bool operator==(const Coords&);
     int getMx() const;
     int getMy() const;
+    void move(char);
 
 private:
     int mX;

@@ -21,3 +21,14 @@ int Coords::getMy() const {
 }
 
 Coords::Coords(int _x, int _y) : mX(_x), mY(_y) {}
+
+void Coords::move(char direction) {
+    switch (direction) {
+        case 'U' : mX--; break;
+        case 'D' : mX++; break;
+        case 'L' : mY--; break;
+        case 'R' : mY++; break;
+        default:
+            break;
+    }
+}

@@ -12,29 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c613918-0516-425d-a952-3cb7dd8b7736" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Slam.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Slam.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Fireblast.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Fireblast.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Ignite.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Ignite.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Backstab.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Backstab.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Paralysis.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Paralysis.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.hpp" afterDir="false" />
@@ -132,7 +112,7 @@
       <workItem from="1574852685047" duration="19000" />
       <workItem from="1576502165080" duration="155000" />
       <workItem from="1576502659106" duration="28641000" />
-      <workItem from="1576660505943" duration="6529000" />
+      <workItem from="1576660505943" duration="10520000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1576580103689</created>
@@ -169,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576601298326</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Hero Skills and Hero Factory">
+      <created>1576674506993</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1576674506993</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +181,7 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Added main classes" />
     <MESSAGE value="Added Heroes and their stats" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Heroes and their stats" />
+    <MESSAGE value="Added Hero Skills and Hero Factory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Hero Skills and Hero Factory" />
   </component>
 </project>

@@ -61,6 +61,15 @@ Game::Game(const std::string & inputPath) {
                 default: std::cerr << "Invalid Hero type : " << type << std::endl; exit(1);
             }
         }
+        in >> mRounds;
+        for (int i = 0; i < mRounds; ++i) {
+            for (int j = 0; j < _p; ++j) {
+                in >> type;
+                mMovesBuffer.push(type);
+//                std::cout << type;
+            }
+//            std::cout << std::endl;
+        }
     }
     catch (const std::exception & e) {
         std::cerr << e.what();
@@ -69,7 +78,17 @@ Game::Game(const std::string & inputPath) {
 }
 
 void Game::start() {
-
+    char move;
+    heroStats();
+    for (int i = 0; i < mRounds; i++) {
+        std::cout << "Round : " << i + 1 << std::endl;
+        for (auto& Hero : mHeroes) {
+            move = mMovesBuffer.front();
+            Hero->mCoords.move(move);
+            mMovesBuffer.pop();
+        }
+        heroStats();
+    }
 }
 
 void Game::finish() {
@@ -78,4 +97,25 @@ void Game::finish() {
 
 void Game::update() {
 
+}
+
+void Game::heroStats() {
+        for (auto & mHero : mHeroes) {
+            if (dynamic_cast<Rogue *>(mHero)) {
+                Rogue *rog = dynamic_cast<Rogue *>(mHero);
+                std::cout << rog << std::endl;
+            }
+            if (dynamic_cast<Wizard *>(mHero)) {
+                Wizard *rog = dynamic_cast<Wizard *>(mHero);
+                std::cout << rog << std::endl;
+            }
+            if (dynamic_cast<Knight *>(mHero)) {
+                Knight *rog = dynamic_cast<Knight *>(mHero);
+                std::cout << &rog << std::endl;
+            }
+            if (dynamic_cast<Pyromancer *>(mHero)) {
+                Pyromancer *rog = dynamic_cast<Pyromancer *>(mHero);
+                std::cout << &rog << std::endl;
+            }
+        }
 }

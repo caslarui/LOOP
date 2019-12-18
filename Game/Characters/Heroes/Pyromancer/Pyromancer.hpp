@@ -6,6 +6,7 @@
 #define LOOP_PYROMANCER_HPP
 
 
+#include <ostream>
 #include "../Hero.hpp"
 
 class Pyromancer : public Hero {
@@ -13,6 +14,7 @@ public:
     Pyromancer(int, int);
 
     void attack(const Hero &) override;
+    friend std::ostream&operator<<(std::ostream&, const Pyromancer&);
 };
 
 
