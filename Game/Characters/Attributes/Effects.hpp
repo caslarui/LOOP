@@ -13,14 +13,14 @@ class Effects {
 public:
     Effects();
     bool isDisabled();
-    bool hasEffect();
+    bool hasEffect() const;
     void setEffect(EffectTypes, int, int);
     void decreaseTime();
 
 private:
     EffectTypes mType;
-    int mDmg{};
-    int mTime{};
+    int mDmg;
+    int mTime;
 };
 
 

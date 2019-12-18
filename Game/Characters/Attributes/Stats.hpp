@@ -6,7 +6,9 @@
 #define LOOP_STATS_HPP
 
 
-#include "../Heroes/Hero.hpp"
+//#include "../Heroes/Hero.hpp"
+
+//class Hero;
 
 class Stats {
 public:

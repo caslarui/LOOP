@@ -6,8 +6,13 @@
 #define LOOP_PYROMANCER_HPP
 
 
-class Pyromancer {
+#include "../Hero.hpp"
 
+class Pyromancer : public Hero {
+public:
+    Pyromancer(int, int);
+
+    void attack(const Hero &) override;
 };
 
 

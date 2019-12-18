@@ -6,13 +6,16 @@
 #define LOOP_KNIGHT_HPP
 
 
+#include <ostream>
 #include "../Hero.hpp"
 
-class Knight : private Hero {
+class Knight : public Hero {
 public:
     Knight(int, int);
 
     void attack(const Hero &) override;
+
+    friend std::ostream&operator<<(std::ostream, const Knight&);
 };
 
 

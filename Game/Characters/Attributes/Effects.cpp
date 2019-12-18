@@ -31,7 +31,7 @@ void Effects::decreaseTime() {
     }
 }
 
-bool Effects::hasEffect() {
+bool Effects::hasEffect() const {
     return mType != None;
 }
 

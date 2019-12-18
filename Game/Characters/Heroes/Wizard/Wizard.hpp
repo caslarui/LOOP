@@ -5,9 +5,13 @@
 #ifndef LOOP_WIZARD_HPP
 #define LOOP_WIZARD_HPP
 
+#include "../Hero.hpp"
 
-class Wizard {
+class Wizard : public Hero {
+public:
+    Wizard(int, int);
 
+    void attack(const Hero &) override;
 };
 
 

@@ -3,3 +3,7 @@
 //
 
 #include "Rogue.hpp"
+
+Rogue::Rogue(int _x, int _y) : Hero(_x, _y) {}
+
+void Rogue::attack(const Hero &) {}

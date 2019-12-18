@@ -11,35 +11,41 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c613918-0516-425d-a952-3cb7dd8b7736" name="Default Changelist" comment="Added main classes">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/caslarui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Strategy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Strategy.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Ability.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Ability.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="9c613918-0516-425d-a952-3cb7dd8b7736" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Slam.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Slam.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Fireblast.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Fireblast.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Ignite.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Ignite.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Backstab.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Backstab.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Paralysis.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Paralysis.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Game.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Map/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Map/Map.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Map/Map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Map/Map.hpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +55,20 @@
   </component>
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FavoritesManager">
@@ -76,7 +96,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -110,7 +131,8 @@
       <workItem from="1574453472663" duration="1591000" />
       <workItem from="1574852685047" duration="19000" />
       <workItem from="1576502165080" duration="155000" />
-      <workItem from="1576502659106" duration="20471000" />
+      <workItem from="1576502659106" duration="28641000" />
+      <workItem from="1576660505943" duration="6529000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1576580103689</created>
@@ -140,11 +162,29 @@
       <option name="project" value="LOCAL" />
       <updated>1576582487237</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Heroes and their stats">
+      <created>1576601298326</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1576601298326</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -153,6 +193,7 @@
     </ignored-roots>
     <MESSAGE value="First commit" />
     <MESSAGE value="Added main classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added main classes" />
+    <MESSAGE value="Added Heroes and their stats" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Heroes and their stats" />
   </component>
 </project>

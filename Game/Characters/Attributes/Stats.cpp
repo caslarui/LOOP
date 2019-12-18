@@ -3,6 +3,7 @@
 //
 
 #include "Stats.hpp"
+//#include "../Heroes/Hero.hpp"
 
 void Stats::takeDmg(int dmg) {
     mCurrentHp -= dmg;

@@ -5,9 +5,13 @@
 #ifndef LOOP_ROGUE_HPP
 #define LOOP_ROGUE_HPP
 
+#include "../Hero.hpp"
 
-class Rogue {
+class Rogue : public Hero {
+public:
+    Rogue(int, int);
 
+    void attack(const Hero &) override;
 };
 
 

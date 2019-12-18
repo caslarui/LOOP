@@ -21,7 +21,7 @@ public:
     void update();
 
 private:
-    std::vector<Hero*> Heroes;
+    std::vector<Hero*> mHeroes;
 };
 
 

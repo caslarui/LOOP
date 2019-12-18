@@ -2,6 +2,7 @@
 // Created by caslarui on 16.12.2019.
 //
 #include "Game.hpp"
+#include "Characters/Heroes/HeroFactory.hpp"
 
 Game::Game(const std::string & inputPath) {
 
@@ -46,10 +47,20 @@ Game::Game(const std::string & inputPath) {
         int _p;
         in >> _p;
 
+        // Cream lista cu eroi.
+        char type;
+        int x;
+        int y;
         for (int i = 0; i < _p; ++i) {
-
+            in >> type >> x >> y;
+            switch (type) {
+                case 'K' : this->mHeroes.push_back(HeroFactory::getKnight(x, y)); break;
+                case 'W' : this->mHeroes.push_back(HeroFactory::getWizard(x, y)); break;
+                case 'R' : this->mHeroes.push_back(HeroFactory::getRogue(x, y)); break;
+                case 'P' : this->mHeroes.push_back(HeroFactory::getPyromancer(x, y)); break;
+                default: std::cerr << "Invalid Hero type : " << type << std::endl; exit(1);
+            }
         }
-
     }
     catch (const std::exception & e) {
         std::cerr << e.what();
