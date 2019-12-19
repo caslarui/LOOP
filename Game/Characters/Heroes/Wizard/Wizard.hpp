@@ -12,8 +12,8 @@ class Wizard : public Hero {
 public:
     Wizard(int, int);
 
-    void attack(const Hero &) override;
-    friend std::ostream&operator<<(std::ostream&, const Wizard*);
+    void attack(Hero &) override;
+    friend std::ostream&operator<<(std::ostream&, const Wizard&);
 };
 
 

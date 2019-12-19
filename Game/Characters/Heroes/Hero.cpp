@@ -25,6 +25,10 @@ const Coords &Hero::getMCoords() const {
     return mCoords;
 }
 
-const Effects &Hero::getMEffect() const {
-    return mEffect;
+bool Hero::isDead() {
+    return Stats::isDead();
+}
+
+void Hero::setDead() {
+    Stats::setDead();
 }

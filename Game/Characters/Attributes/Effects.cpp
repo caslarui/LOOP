@@ -35,4 +35,10 @@ bool Effects::hasEffect() const {
     return mType != None;
 }
 
+Effects::Effects(EffectTypes type, int dmg, int rounds) {
+    this->mType = type;
+    this->mDmg = dmg;
+    this->mTime = rounds;
+}
+
 

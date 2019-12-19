@@ -5,26 +5,22 @@
 #ifndef LOOP_STATS_HPP
 #define LOOP_STATS_HPP
 
-
-//#include "../Heroes/Hero.hpp"
-
-//class Hero;
-
 class Stats {
 public:
     Stats();
 
-protected:
+    void takeDmg(int);
+
+    virtual void setDead();
+
+    virtual bool isDead();
+    void earnXP(int);
+
     int mCurrentHp;
     int mMaxHp;
     int mXp;
     int mLvl;
     bool dead;
-
-    void takeDmg(int);
-    void setDead();
-    bool isDead();
-    void earnXP(int);
 };
 
 

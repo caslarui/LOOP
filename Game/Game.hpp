@@ -13,6 +13,17 @@
 #include "Characters/Heroes/Hero.hpp"
 #include "Characters/Angels/Angel.hpp"
 
+typedef struct Buffer {
+    Hero* mHero = nullptr;
+    int mGainedXp = 0;
+
+    Buffer(Hero *other, int xp) {
+        mHero = other;
+        mGainedXp = xp;
+    }
+
+} Buffer;
+
 class Game {
 public:
     explicit Game(const std::string&);
@@ -21,11 +32,19 @@ public:
     void finish();
     void update();
 
+    // Array where im saving a pointer to a Hero and the gained XP
+    static std::vector<Buffer> mXpBuffer;
 private:
+
     void heroStats();
 
+    // Array where im saving all the Heroes.
     std::vector<Hero*> mHeroes;
+
+    // Queue of moves
     std::queue<char> mMovesBuffer;
+
+    // Number of rounds.
     int mRounds;
 
 };

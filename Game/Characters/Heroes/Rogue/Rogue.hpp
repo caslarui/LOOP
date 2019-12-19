@@ -12,8 +12,8 @@ class Rogue : public Hero {
 public:
     Rogue(int, int);
 
-    void attack(const Hero &) override;
-    friend std::ostream&operator<<(std::ostream&, const Rogue*);
+    void attack(Hero &) override;
+    friend std::ostream&operator<<(std::ostream&, const Rogue&);
 };
 
 

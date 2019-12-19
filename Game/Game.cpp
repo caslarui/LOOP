@@ -58,7 +58,7 @@ Game::Game(const std::string & inputPath) {
                 case 'W' : this->mHeroes.push_back(HeroFactory::getWizard(x, y)); break;
                 case 'R' : this->mHeroes.push_back(HeroFactory::getRogue(x, y)); break;
                 case 'P' : this->mHeroes.push_back(HeroFactory::getPyromancer(x, y)); break;
-                default: std::cerr << "Invalid Hero type : " << type << std::endl; exit(1);
+                default: std::cerr << "Invalid Hero type : " << type << std::endl; exit(EXIT_FAILURE);
             }
         }
         in >> mRounds;
@@ -66,9 +66,7 @@ Game::Game(const std::string & inputPath) {
             for (int j = 0; j < _p; ++j) {
                 in >> type;
                 mMovesBuffer.push(type);
-//                std::cout << type;
             }
-//            std::cout << std::endl;
         }
     }
     catch (const std::exception & e) {
@@ -88,6 +86,10 @@ void Game::start() {
             mMovesBuffer.pop();
         }
         heroStats();
+
+        // Collision check
+
+        // Battle
     }
 }
 

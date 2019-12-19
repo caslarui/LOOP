@@ -12,6 +12,7 @@ enum EffectTypes {
 class Effects {
 public:
     Effects();
+    Effects(EffectTypes, int, int);
     bool isDisabled();
     bool hasEffect() const;
     void setEffect(EffectTypes, int, int);

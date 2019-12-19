@@ -6,8 +6,16 @@
 #define LOOP_ABILITY_HPP
 
 
-class Ability {
+//#include "Hero.hpp"
+class Hero;
 
+class Ability {
+public:
+
+    virtual void hit(Hero &) = 0;
+    virtual void upgradeAbility() = 0;
+
+    Hero* mOwner = nullptr;
 };
 
 
