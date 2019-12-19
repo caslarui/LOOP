@@ -9,7 +9,7 @@
 #include "../Pyromancer/Pyromancer.hpp"
 #include "../Wizard/Wizard.hpp"
 
-void Execute::hit(Hero &enemy) {
+void Execute::hit(Hero &enemy, int round = 0) {
     if (!enemy.isDead()) {
         if (hpLimit * static_cast<float>(enemy.mMaxHp) > static_cast<float>(enemy.mCurrentHp)) {
             enemy.setDead();
@@ -25,7 +25,7 @@ void Execute::hit(Hero &enemy) {
         if (dynamic_cast<Wizard*>(&enemy)) {
             dmg *= 0.8f;
         }
-        if (Map::getInstance()->getMMap()[mOwner->getMCoords().getMx()][mOwner->getMCoords().getMx()] == 'L') {
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'L') {
             dmg *= 1.15f;
         }
         dmg = std::round(dmg);

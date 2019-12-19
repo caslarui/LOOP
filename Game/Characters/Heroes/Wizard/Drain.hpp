@@ -9,7 +9,14 @@
 #include "../Ability.hpp"
 
 class Drain : public Ability {
+public:
+    Drain();
+    void hit(Hero &enemy, int round) override ;
+    void upgradeAbility() override ;
 
+private:
+    float basePct;
+    constexpr static float basePctIncrease = 0.05f;
 };
 
 

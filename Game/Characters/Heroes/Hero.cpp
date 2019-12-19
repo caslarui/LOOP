@@ -4,7 +4,6 @@
 
 #include "Hero.hpp"
 #include "../Attributes/Stats.hpp"
-#include "../Attributes/Effects.hpp"
 #include "../Attributes/Coords.hpp"
 
 

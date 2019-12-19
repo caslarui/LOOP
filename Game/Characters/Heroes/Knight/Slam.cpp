@@ -14,7 +14,7 @@ Slam::Slam() {
     baseDmg = 100.0f;
 }
 
-void Slam::hit(Hero &enemy) {
+void Slam::hit(Hero &enemy, int round = 0) {
     if (!enemy.isDead()) {
         float dmg = baseDmg;
         if (dynamic_cast<Knight*>(&enemy)) {
@@ -29,7 +29,7 @@ void Slam::hit(Hero &enemy) {
         if (dynamic_cast<Wizard*>(&enemy)) {
             dmg *= 1.05f;
         }
-        if (Map::getInstance()->getMMap()[mOwner->getMCoords().getMx()][mOwner->getMCoords().getMx()] == 'L') {
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'L') {
             dmg *= 1.15f;
         }
         dmg = std::round(dmg);

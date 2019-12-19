@@ -17,7 +17,7 @@
 class Hero : public Stats {
 public:
     Hero(int, int);
-    virtual void attack(Hero&) = 0;
+    virtual void attack(Hero&, int) = 0;
     bool collide(const Hero&);
     bool isDead() override;
     void setDead() override;

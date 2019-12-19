@@ -24,6 +24,7 @@ public:
     static Rogue* getRogue(int, int);
     static Pyromancer* getPyromancer(int, int);
     static Wizard* getWizard(int, int);
+    static int countXP(Hero&, Hero&);
 };
 
 

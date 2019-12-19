@@ -50,3 +50,7 @@ Wizard *HeroFactory::getWizard(int x = -1, int y = -1) {
     ret->mAbility[0] = new Drain;
     return ret;
 }
+
+int HeroFactory::countXP(Hero &winner, Hero &looser) {
+    return std::max(0, 200 - (winner.mLvl - looser.mLvl * 40));
+}

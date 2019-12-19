@@ -9,7 +9,14 @@
 #include "../Ability.hpp"
 
 class Paralysis: public Ability {
+public:
+    Paralysis();
+    void hit(Hero&, int) override;
+    void upgradeAbility() override;
 
+private:
+    float baseDmg;
+    constexpr const static float baseDmgIncrease = 10.0f;
 };
 
 

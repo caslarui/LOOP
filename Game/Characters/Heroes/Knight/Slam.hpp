@@ -11,11 +11,12 @@
 class Slam : public Ability{
 public:
     Slam();
-    void hit(Hero&) override;
+    void hit(Hero&, int) override;
     void upgradeAbility() override;
 
+private:
     float baseDmg;
-    constexpr static const float baseDmgIncrease = 40.0f;
+    constexpr static float baseDmgIncrease = 40.0f;
 };
 
 

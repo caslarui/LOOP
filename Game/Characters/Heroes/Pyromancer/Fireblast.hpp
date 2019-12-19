@@ -9,7 +9,14 @@
 #include "../Ability.hpp"
 
 class Fireblast : public Ability {
+public:
+    Fireblast();
+    void hit(Hero&, int) override;
+    void upgradeAbility() override;
 
+private:
+    float baseDmg;
+    constexpr const static float baseDmgIncrease = 50.0f;
 };
 
 

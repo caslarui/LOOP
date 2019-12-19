@@ -13,28 +13,33 @@
   <component name="ChangeListManager">
     <list default="true" id="9c613918-0516-425d-a952-3cb7dd8b7736" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Ability.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Ability.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Ability.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Ability.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Slam.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Slam.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Slam.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Slam.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Fireblast.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Fireblast.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Fireblast.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Fireblast.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Ignite.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Ignite.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Ignite.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Ignite.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Pyromancer/Pyromancer.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Backstab.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Backstab.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Backstab.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Backstab.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Paralysis.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Paralysis.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Paralysis.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Paralysis.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.hpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -174,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576678333488</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added Knight skills">
+      <created>1576765682092</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1576765682092</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +215,7 @@
     <MESSAGE value="Added Heroes and their stats" />
     <MESSAGE value="Added Hero Skills and Hero Factory" />
     <MESSAGE value="Implemented Hero Move on map" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Hero Move on map" />
+    <MESSAGE value="Added Knight skills" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Knight skills" />
   </component>
 </project>

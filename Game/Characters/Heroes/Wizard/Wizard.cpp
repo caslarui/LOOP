@@ -6,7 +6,7 @@
 
 Wizard::Wizard(int _x, int _y) : Hero(_x, _y) {}
 
-void Wizard::attack(Hero &) {
+void Wizard::attack(Hero &, int) {
 
 }
 

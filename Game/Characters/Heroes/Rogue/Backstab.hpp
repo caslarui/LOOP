@@ -9,7 +9,14 @@
 #include "../Ability.hpp"
 
 class Backstab : public Ability{
+public:
+    Backstab();
+    void hit(Hero&, int) override;
+    void upgradeAbility() override;
 
+private:
+    float baseDmg;
+    constexpr const static float baseDmgIncrease = 20.0f;
 };
 
 

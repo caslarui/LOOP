@@ -11,7 +11,7 @@
 class Execute : public Ability {
 public:
     Execute();
-    void hit(Hero&) override;
+    void hit(Hero& enemy, int round) override;
     void upgradeAbility() override;
 
 private:
