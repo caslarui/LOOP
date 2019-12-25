@@ -3,6 +3,7 @@
 //
 
 #include <cmath>
+#include <iostream>
 #include "Slam.hpp"
 #include "../../../Map/Map.hpp"
 #include "../Rogue/Rogue.hpp"
@@ -10,32 +11,49 @@
 #include "../Wizard/Wizard.hpp"
 #include "Knight.hpp"
 
-Slam::Slam() {
+Slam::Slam(Hero& owner) : Ability(owner) {
     baseDmg = 100.0f;
 }
 
-void Slam::hit(Hero &enemy, int round = 0) {
+float Slam::hit(Hero &enemy, int round) {
     if (!enemy.isDead()) {
+
         float dmg = baseDmg;
+        float race = 0;
+        float land = 0;
+
+        std::cout << "Slam Base Damage : " << dmg << "\n";
+
         if (dynamic_cast<Knight*>(&enemy)) {
-            dmg *= 1.20f;
+            race = 1.20f;
         }
         if (dynamic_cast<Rogue*>(&enemy)) {
-            dmg *= 0.8f;
+            race = 0.8f;
         }
         if (dynamic_cast<Pyromancer*>(&enemy)) {
-            dmg *= 0.9f;
+            race = 0.9f;
         }
         if (dynamic_cast<Wizard*>(&enemy)) {
-            dmg *= 1.05f;
+            race = 1.05f;
         }
+
+        std::cout << "Race Modifier : " << race << "\n";
+        dmg *= race;
+
         if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'L') {
-            dmg *= 1.15f;
+            land = 1.15f;
+            std::cout << "Land Modifier : " << land << "\n";
+            dmg *= land;
         }
+
         dmg = std::round(dmg);
-        enemy.takeDmg(static_cast<int>(dmg));
-        enemy.mEffect.emplace_back(Disable, 0, 1);
+
+        enemy.mEffect.setEffect(Disable, 0, 1);
+        std::cout << "Second Skill Total Damage : " << dmg << "\n";
+
+        return dmg;
     }
+    return 0;
 }
 
 void Slam::upgradeAbility() {

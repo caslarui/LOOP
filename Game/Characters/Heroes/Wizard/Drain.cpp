@@ -3,6 +3,7 @@
 //
 
 #include <cmath>
+#include <iostream>
 #include "Drain.hpp"
 #include "../Rogue/Rogue.hpp"
 #include "../Knight/Knight.hpp"
@@ -10,32 +11,43 @@
 #include "Wizard.hpp"
 #include "../../../Map/Map.hpp"
 
-Drain::Drain() {
+Drain::Drain(Hero& owner) : Ability(owner) {
     basePct = 0.20f;
 }
 
-void Drain::hit(Hero &enemy, int round = 0) {
+float Drain::hit(Hero &enemy, int round) {
     if (!enemy.isDead()) {
         float basePercent = basePct;
+        float race = 0;
+        float land = 0;
         if (dynamic_cast<Rogue*>(&enemy)) {
-            basePercent *= 0.8f;
+            race = 0.8f;
         }
         if (dynamic_cast<Knight*>(&enemy)) {
-            basePercent *= 1.2f;
+            race = 1.2f;
         }
         if (dynamic_cast<Pyromancer*>(&enemy)) {
-            basePercent *= 0.9f;
+            race = 0.9f;
         }
         if (dynamic_cast<Wizard*>(&enemy)) {
-            basePercent *= 1.05f;
+            race = 1.05f;
         }
+        std::cout << "Drain Base Percent : " << basePercent << std::endl;
+        basePercent *= race;
         float dmg = basePercent * std::min(static_cast<float>(enemy.mMaxHp) * 0.3f, static_cast<float>(enemy.mCurrentHp));
+        std::cout << "Drain Base Damage : " << dmg << std::endl;
+        std::cout << "Race modifier : " << race << "\n";
+
         if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'D') {
-            dmg *= 1.1f;
+            land = 1.1f;
+            std::cout << "Land modifier : " << land << "\n";
+            dmg *= land;
         }
         dmg = std::round(dmg);
-        enemy.takeDmg(static_cast<int>(dmg));
+//        enemy.takeDmg(static_cast<int>(dmg));
+        return dmg;
     }
+    return 0;
 }
 
 void Drain::upgradeAbility() {

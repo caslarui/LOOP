@@ -3,7 +3,6 @@
 //
 
 #include "Stats.hpp"
-//#include "../Heroes/Hero.hpp"
 
 void Stats::takeDmg(int dmg) {
     mCurrentHp -= dmg;
@@ -13,7 +12,7 @@ void Stats::takeDmg(int dmg) {
 }
 
 Stats::Stats() {
-    mCurrentHp = mMaxHp = mLvl = mXp = 0;
+    mCurrentHp = mMaxHp = mLvl = mXp = mHpInc = 0;
     dead = false;
 }
 
@@ -27,4 +26,13 @@ bool Stats::isDead() {
 
 void Stats::earnXP(int _xp) {
     this->mXp += _xp;
+    int lvl = 0;
+    while ( (250 + lvl * 50) <= mXp) {
+        ++lvl;
+    }
+    if (lvl > mLvl) {
+        mMaxHp += mHpInc * (lvl - mLvl);
+        mLvl = lvl;
+        mCurrentHp = mMaxHp;
+    }
 }

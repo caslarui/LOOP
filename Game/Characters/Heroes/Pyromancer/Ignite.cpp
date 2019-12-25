@@ -3,6 +3,7 @@
 //
 
 #include <cmath>
+#include <iostream>
 #include "Ignite.hpp"
 #include "../Rogue/Rogue.hpp"
 #include "../Knight/Knight.hpp"
@@ -10,39 +11,54 @@
 #include "../Wizard/Wizard.hpp"
 #include "../../../Map/Map.hpp"
 
-Ignite::Ignite() {
+Ignite::Ignite(Hero& owner) : Ability(owner) {
     baseDmg = 150.0f;
     effectDmg = 50.0f;
 }
 
-void Ignite::hit(Hero &enemy, int round = 0) {
+float Ignite::hit(Hero &enemy, int round) {
     if (!enemy.isDead()) {
+
         float dmg = baseDmg;
         float effect = effectDmg;
+        float race = 0;
+        float land = 0;
+        round = 2;
+
+        std::cout << "Ignite Base Damage : " << dmg << "\n";
+        std::cout << "Ignite Effect Base Damage : " << effect << "\n";
+
         if (dynamic_cast<Rogue*>(&enemy)) {
-            dmg *= 0.8f;
-            effect *= 0.8f;
+            race = 0.8f;
         }
         if (dynamic_cast<Knight*>(&enemy)) {
-            dmg *= 1.2f;
-            effect *= 1.2f;
+            race = 1.2f;
         }
         if (dynamic_cast<Pyromancer*>(&enemy)) {
-            dmg *= 0.9f;
-            effect *= 0.9f;
+            race = 0.9f;
         }
         if (dynamic_cast<Wizard*>(&enemy)) {
-            dmg *= 1.05f;
-            effect *= 1.05f;
+            race = 1.05f;
         }
+
+        std::cout << "Race Modifier : " << race << "\n";
+        dmg *= race;
+        effect *= race;
+
         if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
-            dmg *= 1.25f;
-            effect *= 1.25f;
+            land = 1.25f;
+            std::cout << "Land Modifier : " << land << "\n";
+            dmg *= land;
+            effect *= land;
         }
+
+        dmg += effect;
         dmg = std::round(dmg);
-        enemy.takeDmg(static_cast<int>(dmg));
-        enemy.mEffect.emplace_back(Dmg, effect, round);
+        enemy.mEffect.setEffect(Dmg, static_cast<int>(effect), round);
+        std::cout << "Second Skill Total Damage : " << dmg << "\n";
+        return dmg;
     }
+    return 0;
 }
 
 void Ignite::upgradeAbility() {

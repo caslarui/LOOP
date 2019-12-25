@@ -10,8 +10,8 @@
 
 class Execute : public Ability {
 public:
-    Execute();
-    void hit(Hero& enemy, int round) override;
+    explicit Execute(Hero&);
+    float hit(Hero& enemy, int round) override;
     void upgradeAbility() override;
 
 private:

@@ -17,8 +17,8 @@ typedef struct Buffer {
     Hero* mHero = nullptr;
     int mGainedXp = 0;
 
-    Buffer(Hero *other, int xp) {
-        mHero = other;
+    Buffer(Hero &other, int xp) {
+        mHero = &other;
         mGainedXp = xp;
     }
 
@@ -33,10 +33,12 @@ public:
     void update();
 
     // Array where im saving a pointer to a Hero and the gained XP
-    static std::vector<Buffer> mXpBuffer;
+    std::queue<Buffer> mXpBuffer;
 private:
 
     void heroStats();
+    void battle(Hero&, Hero&, int);
+    void printBattle(Hero&, Hero&);
 
     // Array where im saving all the Heroes.
     std::vector<Hero*> mHeroes;

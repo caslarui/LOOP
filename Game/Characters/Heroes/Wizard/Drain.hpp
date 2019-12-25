@@ -10,8 +10,8 @@
 
 class Drain : public Ability {
 public:
-    Drain();
-    void hit(Hero &enemy, int round) override ;
+    explicit Drain(Hero&);
+    float hit(Hero &enemy, int round) override ;
     void upgradeAbility() override ;
 
 private:

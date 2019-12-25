@@ -10,8 +10,8 @@
 
 class Fireblast : public Ability {
 public:
-    Fireblast();
-    void hit(Hero&, int) override;
+    explicit Fireblast(Hero&);
+    float hit(Hero&, int) override;
     void upgradeAbility() override;
 
 private:

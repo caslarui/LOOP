@@ -17,18 +17,17 @@
 class Hero : public Stats {
 public:
     Hero(int, int);
-    virtual void attack(Hero&, int) = 0;
+    virtual float attack(Hero&, int) = 0;
     bool collide(const Hero&);
     bool isDead() override;
     void setDead() override;
     const Coords &getMCoords() const;
-//    const Effects &getMEffect() const;
     void setStrategy(Strategy&);
 
     Coords mCoords;
     Strategy* mStrategy;
-    std::vector<Effects> mEffect;
-    std::vector<Ability*> mAbility;
+    Effects mEffect;
+    std::vector<Ability*> mAbility{2};
 };
 
 #endif //LOOP_HERO_HPP

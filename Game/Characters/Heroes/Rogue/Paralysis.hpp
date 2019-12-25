@@ -10,8 +10,8 @@
 
 class Paralysis: public Ability {
 public:
-    Paralysis();
-    void hit(Hero&, int) override;
+    explicit Paralysis(Hero&);
+    float hit(Hero&, int) override;
     void upgradeAbility() override;
 
 private:

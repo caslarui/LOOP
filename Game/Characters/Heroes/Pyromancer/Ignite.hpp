@@ -10,8 +10,8 @@
 
 class Ignite : public Ability {
 public:
-    Ignite();
-    void hit(Hero&, int) override;
+    explicit Ignite(Hero&);
+    float hit(Hero&, int) override;
     void upgradeAbility() override;
 
 private:

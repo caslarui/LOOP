@@ -41,4 +41,8 @@ Effects::Effects(EffectTypes type, int dmg, int rounds) {
     this->mTime = rounds;
 }
 
+int Effects::getEffectDmg() {
+    return mDmg;
+}
+
 

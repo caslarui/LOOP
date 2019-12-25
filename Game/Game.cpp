@@ -77,47 +77,178 @@ Game::Game(const std::string & inputPath) {
 
 void Game::start() {
     char move;
-    heroStats();
-    for (int i = 0; i < mRounds; i++) {
-        std::cout << "Round : " << i + 1 << std::endl;
-        for (auto& Hero : mHeroes) {
+
+    for (int round = 0; round < mRounds; round++) {
+        std::cout << "Round : " << round + 1 << std::endl;
+
+        // Verificam daca exista efecte negative.
+        for (auto& hero : mHeroes) {
+            if (hero->mEffect.hasEffect()) {
+                hero->takeDmg(hero->mEffect.getEffectDmg());
+                hero->mEffect.decreaseTime();
+            }
+        }
+
+        // Efectuam miscarile juctorilor pe mapa
+        for (auto& hero : mHeroes) {
+            if (hero->mEffect.isDisabled())
+                continue;
             move = mMovesBuffer.front();
-            Hero->mCoords.move(move);
+            hero->mCoords.move(move);
             mMovesBuffer.pop();
         }
+
         heroStats();
 
-        // Collision check
+        // Verificam daca s-a depistat vreo coliziune
+        for (int i = 0; i < mHeroes.size(); ++i) {
+            for (int j = i + 1; j < mHeroes.size(); ++j) {
+                if (mHeroes[i]->collide(*mHeroes[j])) {
+                    battle(*mHeroes[i], *mHeroes[j], round);
+                }
+            }
+        }
 
-        // Battle
+        // Actualizam statusurile jucatorilor.
+        update();
     }
 }
 
 void Game::finish() {
-
+    for (auto &hero : mHeroes) {
+        if (dynamic_cast<Rogue*>(hero))
+            std::cout << "R ";
+        if (dynamic_cast<Knight*>(hero))
+            std::cout << "K ";
+        if (dynamic_cast<Pyromancer*>(hero))
+            std::cout << "P ";
+        if (dynamic_cast<Wizard*>(hero))
+            std::cout << "W ";
+        if (hero->isDead()) {
+            std::cout << "dead\n";
+            continue;
+        }
+        std::cout << hero->mLvl << " " << hero->mXp << " " << hero->mCurrentHp << " " << hero->mCoords.getMx() << " "
+                                        << hero->mCoords.getMy() << "\n";
+    }
 }
 
 void Game::update() {
+    // Verificam daca exista eroi care au ramas fara viata
+    //  daca acesta este depistat ii este setat flagul ca dead.
+    for (auto& hero : mHeroes) {
+        if (hero->mCurrentHp <= 0) {
+            hero->setDead();
+        }
+    }
 
+    // Verificam daca vreun eroi trebuie sa primeasca XP in urma unei lupte.
+    if (!mXpBuffer.empty()) {
+        Hero *current;
+        int xp;
+        int oldLvl;
+        int newLvl;
+        while(!mXpBuffer.empty()) {
+
+            // Extragem eroul care va primi XP
+            current = mXpBuffer.front().mHero;
+
+            // Extragem cat Xp acesta ve primi
+            xp = mXpBuffer.front().mGainedXp;
+
+            oldLvl = current->mLvl;
+            current->earnXP(xp);
+            newLvl = current->mLvl;
+
+            // Daca in urma XP primit acesta face lvl up, atunci si skillurile acestuia vor face lvl up.
+            if (newLvl > oldLvl) {
+                for (auto &skill : current->mAbility) {
+                    for (int i = 0; i < (newLvl - oldLvl); ++i) {
+                        skill->upgradeAbility();
+                    }
+                }
+            }
+            mXpBuffer.pop();
+        }
+    }
+}
+
+void Game::battle(Hero& fighter, Hero& enemy, int round) {
+    if (!fighter.isDead() && !enemy.isDead()) {
+
+        // Calculam dmg-ul pe care il va aplica primul luptator
+        printBattle(fighter, enemy);
+        float fighterDmg = fighter.attack(enemy, round);
+
+        // Calculam dmg-ul pe care il va aplica cel de-al doilea luptator
+        printBattle(enemy, fighter);
+        float enemyDmg = enemy.attack(fighter, round);
+
+        // In acelasi moment aplicam skilurile pe personaje
+        fighter.takeDmg(static_cast<int>(enemyDmg));
+        enemy.takeDmg(static_cast<int>(fighterDmg));
+
+        // Verificam daca cineva a fost ucis in decursul luptei
+        if (fighter.mCurrentHp == 0) {
+            mXpBuffer.push({enemy, HeroFactory::countXP(enemy, fighter)});
+        }
+        if (enemy.mCurrentHp == 0) {
+            mXpBuffer.push( {fighter, HeroFactory::countXP(fighter, enemy)} );
+        }
+    }
 }
 
 void Game::heroStats() {
-        for (auto & mHero : mHeroes) {
+        for (auto &mHero : mHeroes) {
             if (dynamic_cast<Rogue *>(mHero)) {
-                Rogue *rog = dynamic_cast<Rogue *>(mHero);
-                std::cout << rog << std::endl;
+                auto *rog = dynamic_cast<Rogue *>(mHero);
+                std::cout << *rog;
             }
             if (dynamic_cast<Wizard *>(mHero)) {
-                Wizard *rog = dynamic_cast<Wizard *>(mHero);
-                std::cout << rog << std::endl;
+                auto *rog = dynamic_cast<Wizard *>(mHero);
+                std::cout << *rog;
             }
             if (dynamic_cast<Knight *>(mHero)) {
-                Knight *rog = dynamic_cast<Knight *>(mHero);
-                std::cout << &rog << std::endl;
+                auto *rog = dynamic_cast<Knight *>(mHero);
+                std::cout << &rog;
             }
             if (dynamic_cast<Pyromancer *>(mHero)) {
-                Pyromancer *rog = dynamic_cast<Pyromancer *>(mHero);
-                std::cout << &rog << std::endl;
+                auto *rog = dynamic_cast<Pyromancer *>(mHero);
+                std::cout << &rog;
             }
         }
+        std::cout << std::endl;
+}
+
+void Game::printBattle(Hero &fighter, Hero &enemy) {
+    std::string type_fighter;
+    std::string type_enemy;
+
+    if (dynamic_cast<Rogue *>(&fighter)) {
+        type_fighter = "Rogue";
+    }
+    if (dynamic_cast<Knight *>(&fighter)) {
+        type_fighter = "Knight";
+    }
+    if (dynamic_cast<Pyromancer *>(&fighter)) {
+        type_fighter = "Pyromancer";
+    }
+    if (dynamic_cast<Wizard *>(&fighter)) {
+        type_fighter = "Wizard";
+    }
+
+    if (dynamic_cast<Rogue *>(&enemy)) {
+        type_enemy = "Rogue";
+    }
+    if (dynamic_cast<Knight *>(&enemy)) {
+        type_enemy = "Knight";
+    }
+    if (dynamic_cast<Pyromancer *>(&enemy)) {
+        type_enemy = "Pyromancer";
+    }
+    if (dynamic_cast<Wizard *>(&enemy)) {
+        type_enemy = "Wizard";
+    }
+
+    std::cout << "\n" << type_fighter << " is fighting with " << type_enemy << std::endl;
 }

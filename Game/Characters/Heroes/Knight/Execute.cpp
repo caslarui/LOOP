@@ -9,27 +9,43 @@
 #include "../Pyromancer/Pyromancer.hpp"
 #include "../Wizard/Wizard.hpp"
 
-void Execute::hit(Hero &enemy, int round = 0) {
+float Execute::hit(Hero &enemy, int round) {
     if (!enemy.isDead()) {
         if (hpLimit * static_cast<float>(enemy.mMaxHp) > static_cast<float>(enemy.mCurrentHp)) {
-            enemy.setDead();
-            return;
+            enemy.mCurrentHp = 0;
+            return 0;
         }
+
         float dmg = baseDmg;
+        float race = 0;
+        float land = 0;
+
+        std::cout << "Execute Base Damage : " << dmg << "\n";
+
         if (dynamic_cast<Rogue*>(&enemy)) {
-            dmg *= 1.15f;
+            race = 1.15f;
         }
         if (dynamic_cast<Pyromancer*>(&enemy)) {
-            dmg *= 1.1f;
+            race = 1.1f;
         }
         if (dynamic_cast<Wizard*>(&enemy)) {
-            dmg *= 0.8f;
+            race = 0.8f;
         }
+
+        std::cout << "Race Modifier : " << race << "\n";
+        dmg *= race;
+
         if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'L') {
-            dmg *= 1.15f;
+            land = 1.15f;
+            std::cout << "Land Modifier : " << land << "\n";
+            dmg *= land;
         }
+
         dmg = std::round(dmg);
-        enemy.takeDmg(static_cast<int>(dmg));
+
+        std::cout << "First Skill Total Damage : " << dmg << "\n";
+
+        return dmg;
     }
 }
 
@@ -40,7 +56,7 @@ void Execute::upgradeAbility() {
     }
 }
 
-Execute::Execute() {
+Execute::Execute(Hero& owner) : Ability(owner) {
     baseDmg = 200.0f;
     hpLimit = 0.2f;
 }

@@ -8,18 +8,16 @@
 
 Knight::Knight(int _x, int _y) : Hero(_x, _y) {}
 
-void Knight::attack(Hero &enemy, int round = 0) {
-    for(Ability *skill : mAbility) {
-        skill->hit(enemy, round);
+float Knight::attack(Hero &enemy, int round) {
+    float dmg = 0;
+    for (int i = 0; i < 2; ++i) {
+        dmg += mAbility[i]->hit(enemy, round);
     }
-
-    if (enemy.mCurrentHp <= 0) {
-        enemy.setDead();
-//        Game::mXpBuffer.emplace_back(this, HeroFactory::countXP(*this, enemy));
-    }
+    return dmg;
 }
 
 std::ostream &operator<<(std::ostream& os, const Knight& other) {
-    os << "Knight{ " << other.mCoords.getMx() << " : " << other.mCoords.getMy() << " }\n";
+    os << "Knight {" << other.mCoords.getMx() << " : " << other.mCoords.getMy() << "} | [" << other.mCurrentHp << " - " <<
+       other.mLvl<< "]\n";
     return os;
 }

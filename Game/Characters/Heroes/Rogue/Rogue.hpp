@@ -12,7 +12,7 @@ class Rogue : public Hero {
 public:
     Rogue(int, int);
 
-    void attack(Hero &, int) override;
+    float attack(Hero &, int) override;
     friend std::ostream&operator<<(std::ostream&, const Rogue&);
 };
 

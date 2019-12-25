@@ -10,8 +10,8 @@
 
 class Backstab : public Ability{
 public:
-    Backstab();
-    void hit(Hero&, int) override;
+    explicit Backstab(Hero&);
+    float hit(Hero&, int) override;
     void upgradeAbility() override;
 
 private:

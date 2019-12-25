@@ -12,10 +12,12 @@ class Hero;
 class Ability {
 public:
 
-    virtual void hit(Hero & enemy, int round) = 0;
+    explicit Ability(Hero &owner) : mOwner(&owner){};
+
+    virtual float hit(Hero & enemy, int round) = 0;
     virtual void upgradeAbility() = 0;
 
-//    Hero* mOwner = nullptr;
+    Hero* mOwner = nullptr;
 };
 
 

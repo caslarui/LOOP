@@ -9,15 +9,15 @@ class Stats {
 public:
     Stats();
 
+    void earnXP(int);
     void takeDmg(int);
 
     virtual void setDead();
-
     virtual bool isDead();
-    void earnXP(int);
 
     int mCurrentHp;
     int mMaxHp;
+    int mHpInc;
     int mXp;
     int mLvl;
     bool dead;

@@ -13,7 +13,7 @@ class Knight : public Hero {
 public:
     Knight(int, int);
 
-    void attack(Hero &, int) override;
+    float attack(Hero &, int) override;
 
     friend std::ostream&operator<<(std::ostream&, const Knight&);
 };

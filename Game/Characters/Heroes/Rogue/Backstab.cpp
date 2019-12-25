@@ -3,6 +3,7 @@
 //
 
 #include <cmath>
+#include <iostream>
 #include "Backstab.hpp"
 #include "../Knight/Knight.hpp"
 #include "Rogue.hpp"
@@ -10,36 +11,55 @@
 #include "../Wizard/Wizard.hpp"
 #include "../../../Map/Map.hpp"
 
-Backstab::Backstab() {
+Backstab::Backstab(Hero& owner) : Ability(owner) {
     baseDmg = 200.0f;
 }
 
-void Backstab::hit(Hero &enemy, int round = 0) {
+float Backstab::hit(Hero &enemy, int round = 0) {
     if (!enemy.isDead()) {
         float dmg = baseDmg;
+        float race = 0;
+        float land = 0;
+        float extra = 0;
+
+        std::cout << "Backstab base damage : " << dmg << "\n";
         if (round % 3 == 0 &&
                 Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
-            dmg *= 1.5f;
+            extra = 1.5f;
         }
 
         if (dynamic_cast<Knight*>(&enemy)) {
-            dmg *= .9f;
+            race = .9f;
         }
         if (dynamic_cast<Rogue*>(&enemy)) {
-            dmg *= 1.2f;
+            race = 1.2f;
         }
         if (dynamic_cast<Pyromancer*>(&enemy)) {
-            dmg *= 1.25f;
+            race = 1.25f;
         }
         if (dynamic_cast<Wizard*>(&enemy)) {
-            dmg *= 1.25f;
+            race = 1.25f;
         }
+
+        if (extra != 0) {
+            std::cout << "Critical modifier : " << extra << "\n";
+            dmg *= extra;
+        }
+
         if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
-            dmg *= 1.15f;
+            land = 1.15f;
+        }
+        std::cout << "Race modifier : " << race << "\n";
+        dmg *= race;
+        if (land != 0) {
+            std::cout << "Land modifier : " << land << "\n";
+            dmg *= land;
         }
         dmg = std::round(dmg);
-        enemy.takeDmg(static_cast<int>(dmg));
+        std::cout << "First Skill Total Damage : " << dmg << "\n\n";
+        return dmg;
     }
+    return 0;
 }
 
 void Backstab::upgradeAbility() {

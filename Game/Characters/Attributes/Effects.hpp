@@ -17,6 +17,7 @@ public:
     bool hasEffect() const;
     void setEffect(EffectTypes, int, int);
     void decreaseTime();
+    int getEffectDmg();
 
 private:
     EffectTypes mType;

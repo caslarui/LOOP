@@ -23,7 +23,7 @@ set(TARGET_SRC
         Game/Characters/Heroes/Rogue/Rogue.cpp
         Game/Characters/Heroes/Wizard/Drain.cpp
         Game/Characters/Heroes/Wizard/Wizard.cpp
-        Game/Characters/Heroes/HeroFactory.cpp)
+        Game/Characters/Heroes/HeroFactory.cpp Game/Characters/Heroes/Wizard/Deflect.cpp Game/Characters/Heroes/Wizard/Deflect.hpp)
 set(TARGET_INC
         Game/Game.hpp
         Game/Map/Map.hpp

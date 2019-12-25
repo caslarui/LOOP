@@ -3,6 +3,7 @@
 //
 
 #include <cmath>
+#include <iostream>
 #include "Paralysis.hpp"
 #include "../Knight/Knight.hpp"
 #include "Rogue.hpp"
@@ -10,34 +11,47 @@
 #include "../Wizard/Wizard.hpp"
 #include "../../../Map/Map.hpp"
 
-Paralysis::Paralysis() {
+Paralysis::Paralysis(Hero& owner) : Ability(owner) {
     baseDmg = 40.0f;
 }
 
-void Paralysis::hit(Hero &enemy, int round = 0) {
+float Paralysis::hit(Hero &enemy, int round = 0) {
     if (!enemy.isDead()) {
         float dmg = baseDmg;
+        float race = 0;
+        float land = 0;
         round = 3;
+        std::cout << "Paralysis base damage : " << dmg << "\n";
         if (dynamic_cast<Knight*>(&enemy)) {
-            dmg *= 0.8f;
+            race = 0.8f;
         }
         if (dynamic_cast<Rogue*>(&enemy)) {
-            dmg *= 0.9f;
+            race = 0.9f;
         }
         if (dynamic_cast<Pyromancer*>(&enemy)) {
-            dmg *= 1.2f;
+            race = 1.2f;
         }
         if (dynamic_cast<Wizard*>(&enemy)) {
-            dmg *= 1.25f;
+            race = 1.25f;
         }
         if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
-            dmg *= 1.15f;
+            land = 1.15f;
             round = 6;
         }
+        std::cout << "Race modifier : " << race << "\n";
+        dmg *= race;
+
+        if (land != 0) {
+            std::cout << "Land modifier : " << land << "\n";
+            dmg *= land;
+        }
+
         dmg = std::round(dmg);
-        enemy.takeDmg(static_cast<int>(dmg));
-        enemy.mEffect.emplace_back(Dmg, dmg, round);
+        std::cout << "Second Skill Total Damage : " << dmg << "\n\n";
+        enemy.mEffect.setEffect(Dmg, dmg, round);
+        return dmg;
     }
+    return 0;
 }
 
 void Paralysis::upgradeAbility() {

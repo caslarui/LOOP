@@ -6,8 +6,12 @@
 
 Wizard::Wizard(int _x, int _y) : Hero(_x, _y) {}
 
-void Wizard::attack(Hero &, int) {
-
+float Wizard::attack(Hero &enemy, int round) {
+    float dmg = 0;
+    for (int i = 0; i < 2; ++i) {
+        dmg += mAbility[i]->hit(enemy, round);
+    }
+    return dmg;
 }
 
 std::ostream &operator<<(std::ostream &os, const Wizard &other) {
