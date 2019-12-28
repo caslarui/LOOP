@@ -2,8 +2,6 @@
 // Created by caslarui on 16.12.2019.
 //
 
-#include <cstdlib>
-
 #include "Game/Game.hpp"
 
 int main(int argc, char** argv) {
@@ -14,7 +12,7 @@ int main(int argc, char** argv) {
     mGame.start();
 
     // Distrugem datele alocate si afisam output.
-    mGame.finish();
+    mGame.finish(argv[2]);
 
     return EXIT_SUCCESS;
 }

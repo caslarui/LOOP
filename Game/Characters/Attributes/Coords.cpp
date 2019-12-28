@@ -32,3 +32,8 @@ void Coords::move(char direction) {
             break;
     }
 }
+
+void Coords::setCoords(int x, int y) {
+    mX = x;
+    mY = y;
+}

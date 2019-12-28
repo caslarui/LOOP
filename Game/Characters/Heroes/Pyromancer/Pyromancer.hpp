@@ -14,7 +14,7 @@ public:
     Pyromancer(int, int);
 
     float attack(Hero &, int) override;
-    friend std::ostream&operator<<(std::ostream&, const Pyromancer&);
+    friend std::ostream&operator<<(std::ostream&, Pyromancer&);
 };
 
 

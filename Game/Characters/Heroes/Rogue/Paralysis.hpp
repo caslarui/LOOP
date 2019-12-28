@@ -13,6 +13,7 @@ public:
     explicit Paralysis(Hero&);
     float hit(Hero&, int) override;
     void upgradeAbility() override;
+    float getBaseDmg(Hero &, int) override ;
 
 private:
     float baseDmg;

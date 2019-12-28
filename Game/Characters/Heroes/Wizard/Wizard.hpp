@@ -14,7 +14,7 @@ public:
 
     float attack(Hero &, int) override;
 
-    friend std::ostream&operator<<(std::ostream&, const Wizard&);
+    friend std::ostream&operator<<(std::ostream&, Wizard&);
 };
 
 

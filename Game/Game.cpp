@@ -1,6 +1,10 @@
 //
 // Created by caslarui on 16.12.2019.
 //
+
+#define print(chr, times) for(int i = 0; i < times; ++i) std::cout << chr; std::cout<<std::endl;
+
+
 #include "Game.hpp"
 #include "Characters/Heroes/HeroFactory.hpp"
 
@@ -33,8 +37,8 @@ Game::Game(const std::string & inputPath) {
         // Citim caracter cu caracter si inscriem in obiectul temporar
         for (int i = 0; i < _n; ++i) {
             for (int j = 0; j < _m; ++j) {
-               in >> c;
-               tmp[i][j] = c;
+                in >> c;
+                tmp[i][j] = c;
             }
         }
 
@@ -79,23 +83,30 @@ void Game::start() {
     char move;
 
     for (int round = 0; round < mRounds; round++) {
-        std::cout << "Round : " << round + 1 << std::endl;
+        std::cout << "Round : " << round + 1 << std::endl << std::endl;
 
-        // Verificam daca exista efecte negative.
-        for (auto& hero : mHeroes) {
-            if (hero->mEffect.hasEffect()) {
-                hero->takeDmg(hero->mEffect.getEffectDmg());
-                hero->mEffect.decreaseTime();
-            }
-        }
 
         // Efectuam miscarile juctorilor pe mapa
         for (auto& hero : mHeroes) {
-            if (hero->mEffect.isDisabled())
+            if (hero->mEffect.isDisabled() || hero->isDead()) {
+                mMovesBuffer.pop();
                 continue;
+            }
             move = mMovesBuffer.front();
             hero->mCoords.move(move);
             mMovesBuffer.pop();
+        }
+
+        // Verificam daca exista efecte negative.
+        for (auto& hero : mHeroes) {
+            if (hero->mEffect.isDisabled()) {
+                hero->mEffect.decreaseTime();
+                continue;
+            }
+            if (hero->mEffect.hasEffect() && !hero->mEffect.isDisabled()) {
+                hero->takeDmg(hero->mEffect.getEffectDmg());
+                hero->mEffect.decreaseTime();
+            }
         }
 
         heroStats();
@@ -111,43 +122,73 @@ void Game::start() {
 
         // Actualizam statusurile jucatorilor.
         update();
+        heroStats();
+        print("=",100)
     }
 }
 
-void Game::finish() {
-    for (auto &hero : mHeroes) {
-        if (dynamic_cast<Rogue*>(hero))
-            std::cout << "R ";
-        if (dynamic_cast<Knight*>(hero))
-            std::cout << "K ";
-        if (dynamic_cast<Pyromancer*>(hero))
-            std::cout << "P ";
-        if (dynamic_cast<Wizard*>(hero))
-            std::cout << "W ";
-        if (hero->isDead()) {
-            std::cout << "dead\n";
-            continue;
+void Game::finish(const std::string& output) {
+    try {
+        std::ofstream of(output);
+
+        // Verificam daca fisierul a fost deschis cu succes.
+        if (!of.is_open()) {
+            throw std::ios::failure("\nError opening file\n");
         }
-        std::cout << hero->mLvl << " " << hero->mXp << " " << hero->mCurrentHp << " " << hero->mCoords.getMx() << " "
-                                        << hero->mCoords.getMy() << "\n";
+        for (auto &hero : mHeroes) {
+            if (dynamic_cast<Rogue*>(hero)) {
+                std::cout << "R ";
+                of <<"R ";
+            }
+            if (dynamic_cast<Knight*>(hero)) {
+                std::cout << "K ";
+                of << "K ";
+            }
+            if (dynamic_cast<Pyromancer*>(hero)) {
+                std::cout << "P ";
+                of << "P ";
+            }
+            if (dynamic_cast<Wizard*>(hero)) {
+                std::cout << "W ";
+                of << "W ";
+            }
+            if (hero->isDead()) {
+                std::cout << "dead\n";
+                of << "dead\n";
+                continue;
+            }
+            std::cout << hero->mLvl << " " << hero->mXp << " " << hero->mCurrentHp << " " << hero->mCoords.getMx() << " "
+                      << hero->mCoords.getMy() << "\n";
+            of << hero->mLvl << " " << hero->mXp << " " << hero->mCurrentHp << " " << hero->mCoords.getMx() << " "
+                      << hero->mCoords.getMy() << "\n";
+        }
+        of.close();
+    }
+    catch (const std::exception & e) {
+        std::cerr << e.what();
+        exit(EXIT_FAILURE);
     }
 }
 
 void Game::update() {
     // Verificam daca exista eroi care au ramas fara viata
     //  daca acesta este depistat ii este setat flagul ca dead.
-    for (auto& hero : mHeroes) {
+    for (auto &hero : mHeroes) {
         if (hero->mCurrentHp <= 0) {
             hero->setDead();
+//            hero->mCoords.setCoords(-1, -1);
+            hero->mEffect.clearEffects();
         }
     }
 
-    // Verificam daca vreun eroi trebuie sa primeasca XP in urma unei lupte.
+    // Verificam daca vreun erou trebuie sa primeasca XP in urma unei lupte.
     if (!mXpBuffer.empty()) {
+
         Hero *current;
         int xp;
         int oldLvl;
         int newLvl;
+
         while(!mXpBuffer.empty()) {
 
             // Extragem eroul care va primi XP
@@ -199,56 +240,29 @@ void Game::battle(Hero& fighter, Hero& enemy, int round) {
 }
 
 void Game::heroStats() {
-        for (auto &mHero : mHeroes) {
-            if (dynamic_cast<Rogue *>(mHero)) {
-                auto *rog = dynamic_cast<Rogue *>(mHero);
-                std::cout << *rog;
-            }
-            if (dynamic_cast<Wizard *>(mHero)) {
-                auto *rog = dynamic_cast<Wizard *>(mHero);
-                std::cout << *rog;
-            }
-            if (dynamic_cast<Knight *>(mHero)) {
-                auto *rog = dynamic_cast<Knight *>(mHero);
-                std::cout << &rog;
-            }
-            if (dynamic_cast<Pyromancer *>(mHero)) {
-                auto *rog = dynamic_cast<Pyromancer *>(mHero);
-                std::cout << &rog;
-            }
+    std::cout << "| Type\t\t|X : Y \t| iD |  HP \t |  Lvl\t | Effect|  Dmg\t |  Tms\t|\n";
+    for (auto &mHero : mHeroes) {
+        if (dynamic_cast<Rogue *>(mHero)) {
+            auto *rog = dynamic_cast<Rogue *>(mHero);
+            std::cout << *rog;
         }
-        std::cout << std::endl;
+        if (dynamic_cast<Wizard *>(mHero)) {
+            auto *rog = dynamic_cast<Wizard *>(mHero);
+            std::cout << *rog;
+        }
+        if (dynamic_cast<Knight *>(mHero)) {
+            auto *rog = dynamic_cast<Knight *>(mHero);
+            std::cout << *rog;
+        }
+        if (dynamic_cast<Pyromancer *>(mHero)) {
+            auto *rog = dynamic_cast<Pyromancer *>(mHero);
+            std::cout << *rog;
+        }
+    }
+    std::cout << std::endl;
 }
 
 void Game::printBattle(Hero &fighter, Hero &enemy) {
-    std::string type_fighter;
-    std::string type_enemy;
-
-    if (dynamic_cast<Rogue *>(&fighter)) {
-        type_fighter = "Rogue";
-    }
-    if (dynamic_cast<Knight *>(&fighter)) {
-        type_fighter = "Knight";
-    }
-    if (dynamic_cast<Pyromancer *>(&fighter)) {
-        type_fighter = "Pyromancer";
-    }
-    if (dynamic_cast<Wizard *>(&fighter)) {
-        type_fighter = "Wizard";
-    }
-
-    if (dynamic_cast<Rogue *>(&enemy)) {
-        type_enemy = "Rogue";
-    }
-    if (dynamic_cast<Knight *>(&enemy)) {
-        type_enemy = "Knight";
-    }
-    if (dynamic_cast<Pyromancer *>(&enemy)) {
-        type_enemy = "Pyromancer";
-    }
-    if (dynamic_cast<Wizard *>(&enemy)) {
-        type_enemy = "Wizard";
-    }
-
-    std::cout << "\n" << type_fighter << " is fighting with " << type_enemy << std::endl;
+    std::cout << "\n" << HeroFactory::getHeroType(fighter) << " is fighting with "
+              << HeroFactory::getHeroType(enemy) << std::endl;
 }

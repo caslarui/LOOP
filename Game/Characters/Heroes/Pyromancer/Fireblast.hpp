@@ -13,6 +13,8 @@ public:
     explicit Fireblast(Hero&);
     float hit(Hero&, int) override;
     void upgradeAbility() override;
+    float getBaseDmg(Hero &, int) override ;
+
 
 private:
     float baseDmg;

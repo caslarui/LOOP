@@ -14,8 +14,9 @@ float Pyromancer::attack(Hero &enemy, int round) {
     return dmg;
 }
 
-std::ostream &operator<<(std::ostream &os, const Pyromancer &other) {
-    os << "Pyromancer {" << other.mCoords.getMx() << " : " << other.mCoords.getMy() << "} | [" << other.mCurrentHp << " - " <<
-       other.mLvl<< "]\n";
+std::ostream &operator<<(std::ostream &os, Pyromancer &other) {
+    os << "Pyromancer \t{" << other.mCoords.getMx() << " : " << other.mCoords.getMy() << "} | [" << other.isDead()
+       << " | " << other.mCurrentHp << "\t | " << other.mLvl << "\t | " << other.mEffect.getMType() <<
+       "\t | " << other.mEffect.getEffectDmg() << "\t | " << other.mEffect.getMTime() << "\t]\n";
     return os;
 }

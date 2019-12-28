@@ -15,13 +15,16 @@ Paralysis::Paralysis(Hero& owner) : Ability(owner) {
     baseDmg = 40.0f;
 }
 
-float Paralysis::hit(Hero &enemy, int round = 0) {
+float Paralysis::hit(Hero &enemy, int round) {
     if (!enemy.isDead()) {
+
         float dmg = baseDmg;
         float race = 0;
         float land = 0;
         round = 3;
+
         std::cout << "Paralysis base damage : " << dmg << "\n";
+
         if (dynamic_cast<Knight*>(&enemy)) {
             race = 0.8f;
         }
@@ -34,26 +37,29 @@ float Paralysis::hit(Hero &enemy, int round = 0) {
         if (dynamic_cast<Wizard*>(&enemy)) {
             race = 1.25f;
         }
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
-            land = 1.15f;
-            round = 6;
-        }
+
         std::cout << "Race modifier : " << race << "\n";
         dmg *= race;
 
-        if (land != 0) {
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+            land = 1.15f;
+            round = 6;
             std::cout << "Land modifier : " << land << "\n";
             dmg *= land;
         }
 
         dmg = std::round(dmg);
         std::cout << "Second Skill Total Damage : " << dmg << "\n\n";
-        enemy.mEffect.setEffect(Dmg, dmg, round);
+        enemy.mEffect.setEffect(Dmg, static_cast<int>(dmg), round);
         return dmg;
     }
     return 0;
 }
 
 void Paralysis::upgradeAbility() {
+    baseDmg += baseDmgIncrease;
+}
 
+float Paralysis::getBaseDmg(Hero &enemy, int round) {
+    return baseDmg;
 }

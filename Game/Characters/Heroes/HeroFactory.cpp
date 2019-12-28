@@ -59,3 +59,19 @@ Wizard *HeroFactory::getWizard(int x = -1, int y = -1) {
 int HeroFactory::countXP(Hero &winner, Hero &looser) {
     return std::max(0, 200 - (winner.mLvl - looser.mLvl * 40));
 }
+
+std::string HeroFactory::getHeroType(Hero &hero) {
+    if (dynamic_cast<Rogue *>(&hero)) {
+        return "Rogue";
+    }
+    if (dynamic_cast<Knight *>(&hero)) {
+        return"Knight";
+    }
+    if (dynamic_cast<Pyromancer *>(&hero)) {
+        return "Pyromancer";
+    }
+    if (dynamic_cast<Wizard *>(&hero)) {
+        return "Wizard";
+    }
+    return "Unknown Hero Type";
+}

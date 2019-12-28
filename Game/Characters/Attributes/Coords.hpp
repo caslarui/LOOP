@@ -14,6 +14,7 @@ public:
     int getMx() const;
     int getMy() const;
     void move(char);
+    void setCoords(int, int);
 
 private:
     int mX;

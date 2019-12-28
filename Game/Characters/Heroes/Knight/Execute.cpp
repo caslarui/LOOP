@@ -11,14 +11,17 @@
 
 float Execute::hit(Hero &enemy, int round) {
     if (!enemy.isDead()) {
+        float dmg;
         if (hpLimit * static_cast<float>(enemy.mMaxHp) > static_cast<float>(enemy.mCurrentHp)) {
+            dmg = static_cast<float>(enemy.mCurrentHp);
+            std::cout << "Hero HP Limit exceeded\nFirst Skill Total Damage : " << dmg << "\n";
             enemy.mCurrentHp = 0;
-            return 0;
+            return dmg;
         }
 
-        float dmg = baseDmg;
-        float race = 0;
+        float race = 1;
         float land = 0;
+        dmg = baseDmg;
 
         std::cout << "Execute Base Damage : " << dmg << "\n";
 
@@ -43,7 +46,7 @@ float Execute::hit(Hero &enemy, int round) {
 
         dmg = std::round(dmg);
 
-        std::cout << "First Skill Total Damage : " << dmg << "\n";
+        std::cout << "First Skill Total Damage : " << dmg << "\n\n";
 
         return dmg;
     }
@@ -59,4 +62,11 @@ void Execute::upgradeAbility() {
 Execute::Execute(Hero& owner) : Ability(owner) {
     baseDmg = 200.0f;
     hpLimit = 0.2f;
+}
+
+float Execute::getBaseDmg(Hero &enemy, int round) {
+    if (hpLimit * static_cast<float>(enemy.mMaxHp) > static_cast<float>(enemy.mCurrentHp)) {
+        return static_cast<float>(enemy.mCurrentHp);
+    }
+    return baseDmg;
 }

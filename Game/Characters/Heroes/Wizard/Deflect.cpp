@@ -9,23 +9,33 @@
 #include "../Knight/Knight.hpp"
 #include "../Pyromancer/Pyromancer.hpp"
 #include "../../../Map/Map.hpp"
+#include "Wizard.hpp"
 
 Deflect::Deflect(Hero& owner) : Ability(owner) {
     basePct = 0.35f;
 }
 
 float Deflect::hit(Hero &enemy, int round) {
-    if (!enemy.isDead()) {
+    if (!enemy.isDead() || enemy.mCurrentHp > 0) {
         if ( !(dynamic_cast<Wizard*>(&enemy)) ) {
+
             float dmg = 0;
             float race = 0;
             float land = 0;
+
+            auto *wizard = dynamic_cast<Wizard*>(this->mOwner);
             for (int i = 0; i < 2; ++i) {
-                dmg += enemy.mAbility[i]->hit(*(this->mOwner), round);
+                dmg += enemy.mAbility[i]->getBaseDmg(*wizard, round);
             }
+
+            std::cout << "*Total Damage From Enemy : " << dmg << "\n\n";
+            std::cout << "Deflect Dmg Pct : " << basePct << "\n";
+            std::cout << "Deflect Dmg : " << dmg << " x " << basePct << " = ";
+
             dmg *= basePct;
-            dmg = std::round(dmg);
-            std::cout << "Deflect Dmg : " << dmg << "\n";
+
+            std::cout << dmg << "\n";
+
             if (dynamic_cast<Rogue*>(&enemy)) {
                 race = 1.2f;
             }
@@ -35,17 +45,16 @@ float Deflect::hit(Hero &enemy, int round) {
             if (dynamic_cast<Pyromancer*>(&enemy)) {
                 race = 1.3f;
             }
-            if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'D') {
-                land = 1.1f;
-            }
 
             std::cout << "Race modifier : " << race << "\n";
             dmg *= race;
 
-            if (land != 0) {
+            if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'D') {
+                land = 1.1f;
                 dmg *= land;
                 std::cout << "Land modifier : " << land << "\n";
             }
+
             dmg = std::round(dmg);
             std::cout << "Second Skill Total Damage : " << dmg << "\n\n";
             return dmg;
@@ -58,4 +67,8 @@ void Deflect::upgradeAbility() {
     if (basePct <= 0.7) {
         basePct += basePctIncrease;
     }
+}
+
+float Deflect::getBaseDmg(Hero &enemy, int round) {
+    return 0;
 }

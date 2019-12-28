@@ -8,6 +8,7 @@ void Stats::takeDmg(int dmg) {
     mCurrentHp -= dmg;
     if (mCurrentHp <= 0) {
         mCurrentHp = 0;
+        dead = true;
     }
 }
 

@@ -46,17 +46,18 @@ float Backstab::hit(Hero &enemy, int round = 0) {
             dmg *= extra;
         }
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
-            land = 1.15f;
-        }
         std::cout << "Race modifier : " << race << "\n";
         dmg *= race;
-        if (land != 0) {
+
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+            land = 1.15f;
             std::cout << "Land modifier : " << land << "\n";
             dmg *= land;
         }
+
         dmg = std::round(dmg);
-        std::cout << "First Skill Total Damage : " << dmg << "\n\n";
+        std::cout << "First Skill Total Damage : " << dmg << "\n\n ";
+
         return dmg;
     }
     return 0;
@@ -64,4 +65,12 @@ float Backstab::hit(Hero &enemy, int round = 0) {
 
 void Backstab::upgradeAbility() {
     baseDmg += baseDmgIncrease;
+}
+
+float Backstab::getBaseDmg(Hero &enemy, int round) {
+    if (round % 3 == 0 &&
+        Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+        return baseDmg * 1.5f;
+    }
+    return baseDmg;
 }

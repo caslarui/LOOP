@@ -49,7 +49,7 @@ float Slam::hit(Hero &enemy, int round) {
         dmg = std::round(dmg);
 
         enemy.mEffect.setEffect(Disable, 0, 1);
-        std::cout << "Second Skill Total Damage : " << dmg << "\n";
+        std::cout << "Second Skill Total Damage : " << dmg << "\n\n";
 
         return dmg;
     }
@@ -58,4 +58,8 @@ float Slam::hit(Hero &enemy, int round) {
 
 void Slam::upgradeAbility() {
     baseDmg += baseDmgIncrease;
+}
+
+float Slam::getBaseDmg(Hero &enemy, int round) {
+    return baseDmg;
 }

@@ -16,6 +16,7 @@ public:
 
     virtual float hit(Hero & enemy, int round) = 0;
     virtual void upgradeAbility() = 0;
+    virtual float getBaseDmg(Hero &, int) = 0;
 
     Hero* mOwner = nullptr;
 };

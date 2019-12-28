@@ -7,13 +7,13 @@
 
 
 #include "../Ability.hpp"
-#include "Wizard.hpp"
 
 class Deflect : public Ability {
 public:
-    Deflect(Hero&);
+    explicit Deflect(Hero&);
     float hit(Hero &enemy, int round) override ;
     void upgradeAbility() override ;
+    float getBaseDmg(Hero &, int) override ;
 
 private:
     float basePct;

@@ -29,7 +29,7 @@ public:
     explicit Game(const std::string&);
 
     void start();
-    void finish();
+    void finish(const std::string&);
     void update();
 
     // Array where im saving a pointer to a Hero and the gained XP

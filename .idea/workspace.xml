@@ -11,18 +11,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c613918-0516-425d-a952-3cb7dd8b7736" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Deflect.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Deflect.hpp" afterDir="false" />
+    <list default="true" id="9c613918-0516-425d-a952-3cb7dd8b7736" name="Default Changelist" comment="Implemented Battle Logic">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Coords.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Effects.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Attributes/Stats.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Ability.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Ability.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Hero.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/HeroFactory.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Execute.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Knight/Knight.cpp" afterDir="false" />
@@ -41,12 +40,16 @@
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Paralysis.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Paralysis.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Rogue/Rogue.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Deflect.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Deflect.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Deflect.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Deflect.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Drain.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Characters/Heroes/Wizard/Wizard.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Game.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker.sh" beforeDir="false" afterPath="$PROJECT_DIR$/checker.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +116,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="LOOP" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="checker/resources/in/3x3.in" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LOOP" TARGET_NAME="LOOP" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="LOOP" RUN_TARGET_NAME="LOOP">
+    <configuration name="LOOP" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="checker/resources/in/3x3.in out.res" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LOOP" TARGET_NAME="LOOP" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="LOOP" RUN_TARGET_NAME="LOOP">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -137,7 +140,8 @@
       <workItem from="1576763007432" duration="30000" />
       <workItem from="1576763092574" duration="574000" />
       <workItem from="1577004000125" duration="4556000" />
-      <workItem from="1577261378582" duration="14625000" />
+      <workItem from="1577261378582" duration="15525000" />
+      <workItem from="1577394457951" duration="24235000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1576580103689</created>
@@ -233,6 +237,7 @@
     <MESSAGE value="Implemented Hero Move on map" />
     <MESSAGE value="Added Knight skills" />
     <MESSAGE value="Implemented Hero skills" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Hero skills" />
+    <MESSAGE value="Implemented Battle Logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Battle Logic" />
   </component>
 </project>

@@ -13,7 +13,7 @@ public:
     Rogue(int, int);
 
     float attack(Hero &, int) override;
-    friend std::ostream&operator<<(std::ostream&, const Rogue&);
+    friend std::ostream&operator<<(std::ostream&, Rogue&);
 };
 
 

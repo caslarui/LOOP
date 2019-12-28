@@ -65,3 +65,7 @@ void Ignite::upgradeAbility() {
     baseDmg += baseDmgIncrease;
     effectDmg += effectDmgIncrease;
 }
+
+float Ignite::getBaseDmg(Hero &enemy, int round) {
+    return baseDmg;
+}

@@ -13,6 +13,8 @@ public:
     explicit Drain(Hero&);
     float hit(Hero &enemy, int round) override ;
     void upgradeAbility() override ;
+    float getBaseDmg(Hero &, int) override ;
+
 
 private:
     float basePct;

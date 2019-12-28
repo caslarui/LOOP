@@ -13,6 +13,7 @@ public:
     explicit Execute(Hero&);
     float hit(Hero& enemy, int round) override;
     void upgradeAbility() override;
+    float getBaseDmg(Hero &, int) override ;
 
 private:
     float baseDmg;

@@ -25,6 +25,7 @@ public:
     static Pyromancer* getPyromancer(int, int);
     static Wizard* getWizard(int, int);
     static int countXP(Hero&, Hero&);
+    static std::string getHeroType(Hero&);
 };
 
 

@@ -46,7 +46,7 @@ float Fireblast::hit(Hero &enemy, int round) {
             dmg *= land;
         }
 
-        dmg = std::round(dmg);
+        dmg = std::roundf(dmg);
         std::cout << "First Skill Total Damage : " << dmg << "\n";
         return dmg;
     }
@@ -55,4 +55,8 @@ float Fireblast::hit(Hero &enemy, int round) {
 
 void Fireblast::upgradeAbility() {
     baseDmg += baseDmgIncrease;
+}
+
+float Fireblast::getBaseDmg(Hero &enemy, int round) {
+    return baseDmg;
 }

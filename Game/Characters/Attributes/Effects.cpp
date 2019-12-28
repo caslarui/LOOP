@@ -45,4 +45,18 @@ int Effects::getEffectDmg() {
     return mDmg;
 }
 
+EffectTypes Effects::getMType() const {
+    return mType;
+}
+
+int Effects::getMTime() const {
+    return mTime;
+}
+
+void Effects::clearEffects() {
+    mType = None;
+    mTime = 0;
+    mDmg = 0;
+}
+
 
