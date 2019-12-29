@@ -25,6 +25,12 @@ float Execute::hit(Hero &enemy, int round) {
 
         std::cout << "Execute Base Damage : " << dmg << "\n";
 
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'L') {
+            land = 1.15f;
+            std::cout << "Land Modifier : " << land << "\n";
+            dmg *= land;
+        }
+
         if (dynamic_cast<Rogue*>(&enemy)) {
             race = 1.15f;
         }
@@ -37,12 +43,6 @@ float Execute::hit(Hero &enemy, int round) {
 
         std::cout << "Race Modifier : " << race << "\n";
         dmg *= race;
-
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'L') {
-            land = 1.15f;
-            std::cout << "Land Modifier : " << land << "\n";
-            dmg *= land;
-        }
 
         dmg = std::round(dmg);
 
@@ -68,5 +68,8 @@ float Execute::getBaseDmg(Hero &enemy, int round) {
     if (hpLimit * static_cast<float>(enemy.mMaxHp) > static_cast<float>(enemy.mCurrentHp)) {
         return static_cast<float>(enemy.mCurrentHp);
     }
-    return baseDmg;
+    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'L') {
+        return std::round(baseDmg * 1.15f);
+    }
+    return std::round(baseDmg);
 }

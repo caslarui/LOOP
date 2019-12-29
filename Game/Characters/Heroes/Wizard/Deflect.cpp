@@ -36,6 +36,12 @@ float Deflect::hit(Hero &enemy, int round) {
 
             std::cout << dmg << "\n";
 
+            if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'D') {
+                land = 1.1f;
+                dmg *= land;
+                std::cout << "Land modifier : " << land << "\n";
+            }
+
             if (dynamic_cast<Rogue*>(&enemy)) {
                 race = 1.2f;
             }
@@ -48,12 +54,6 @@ float Deflect::hit(Hero &enemy, int round) {
 
             std::cout << "Race modifier : " << race << "\n";
             dmg *= race;
-
-            if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'D') {
-                land = 1.1f;
-                dmg *= land;
-                std::cout << "Land modifier : " << land << "\n";
-            }
 
             dmg = std::round(dmg);
             std::cout << "Second Skill Total Damage : " << dmg << "\n\n";

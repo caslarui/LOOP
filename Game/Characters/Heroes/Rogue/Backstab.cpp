@@ -26,6 +26,14 @@ float Backstab::hit(Hero &enemy, int round = 0) {
         if (round % 3 == 0 &&
                 Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
             extra = 1.5f;
+            std::cout << "Critical modifier : " << extra << "\n";
+            dmg *= extra;
+        }
+
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+            land = 1.15f;
+            std::cout << "Land modifier : " << land << "\n";
+            dmg *= land;
         }
 
         if (dynamic_cast<Knight*>(&enemy)) {
@@ -41,19 +49,8 @@ float Backstab::hit(Hero &enemy, int round = 0) {
             race = 1.25f;
         }
 
-        if (extra != 0) {
-            std::cout << "Critical modifier : " << extra << "\n";
-            dmg *= extra;
-        }
-
         std::cout << "Race modifier : " << race << "\n";
         dmg *= race;
-
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
-            land = 1.15f;
-            std::cout << "Land modifier : " << land << "\n";
-            dmg *= land;
-        }
 
         dmg = std::round(dmg);
         std::cout << "First Skill Total Damage : " << dmg << "\n\n ";
@@ -68,9 +65,11 @@ void Backstab::upgradeAbility() {
 }
 
 float Backstab::getBaseDmg(Hero &enemy, int round) {
+    float dmg = baseDmg;
     if (round % 3 == 0 &&
         Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
-        return baseDmg * 1.5f;
+        dmg *= 1.5f;
+        dmg *= 1.15f;
     }
-    return baseDmg;
+    return std::round(dmg);
 }

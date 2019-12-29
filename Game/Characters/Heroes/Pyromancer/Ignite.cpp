@@ -28,6 +28,13 @@ float Ignite::hit(Hero &enemy, int round) {
         std::cout << "Ignite Base Damage : " << dmg << "\n";
         std::cout << "Ignite Effect Base Damage : " << effect << "\n";
 
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
+            land = 1.25f;
+            std::cout << "Land Modifier : " << land << "\n";
+            dmg *= land;
+            effect *= land;
+        }
+
         if (dynamic_cast<Rogue*>(&enemy)) {
             race = 0.8f;
         }
@@ -45,17 +52,10 @@ float Ignite::hit(Hero &enemy, int round) {
         dmg *= race;
         effect *= race;
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
-            land = 1.25f;
-            std::cout << "Land Modifier : " << land << "\n";
-            dmg *= land;
-            effect *= land;
-        }
-
-        dmg += effect;
+//        dmg += effect;
         dmg = std::round(dmg);
         enemy.mEffect.setEffect(Dmg, static_cast<int>(effect), round);
-        std::cout << "Second Skill Total Damage : " << dmg << "\n";
+        std::cout << "Second Skill Total Damage : " << dmg << "\n\n ";
         return dmg;
     }
     return 0;
@@ -67,5 +67,8 @@ void Ignite::upgradeAbility() {
 }
 
 float Ignite::getBaseDmg(Hero &enemy, int round) {
-    return baseDmg;
+    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
+        return std::round(baseDmg * 1.25f);
+    }
+    return std::round(baseDmg);
 }

@@ -24,6 +24,12 @@ float Fireblast::hit(Hero &enemy, int round) {
 
         std::cout << "Fireblast Base Damage : " << dmg << "\n";
 
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
+            land = 1.25f;
+            std::cout << "Land Modifier : " << land << "\n";
+            dmg *= land;
+        }
+
         if (dynamic_cast<Rogue*>(&enemy)) {
             race = 0.8f;
         }
@@ -40,14 +46,8 @@ float Fireblast::hit(Hero &enemy, int round) {
         std::cout << "Race Modifier : " << race << "\n";
         dmg *= race;
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
-            land = 1.25f;
-            std::cout << "Land Modifier : " << land << "\n";
-            dmg *= land;
-        }
-
         dmg = std::roundf(dmg);
-        std::cout << "First Skill Total Damage : " << dmg << "\n";
+        std::cout << "First Skill Total Damage : " << dmg << "\n\n";
         return dmg;
     }
     return 0;
@@ -58,5 +58,8 @@ void Fireblast::upgradeAbility() {
 }
 
 float Fireblast::getBaseDmg(Hero &enemy, int round) {
-    return baseDmg;
+    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
+        return std::round(baseDmg * 1.25f);
+    }
+    return std::round(baseDmg);
 }

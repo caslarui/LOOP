@@ -65,6 +65,7 @@ void Drain::upgradeAbility() {
 
 float Drain::getBaseDmg(Hero &enemy, int round) {
     float basePercent = basePct;
+    float dmg;
     if (dynamic_cast<Rogue*>(&enemy)) {
         basePercent *= 0.8f;
     }
@@ -77,6 +78,10 @@ float Drain::getBaseDmg(Hero &enemy, int round) {
     if (dynamic_cast<Wizard*>(&enemy)) {
         basePercent *= 1.05f;
     }
-    return (std::roundf(basePercent * std::min(static_cast<float>(enemy.mMaxHp) * 0.3f, static_cast<float>(enemy.mCurrentHp))));
+    dmg = std::roundf(basePercent * std::min(static_cast<float>(enemy.mMaxHp) * 0.3f, static_cast<float>(enemy.mCurrentHp)));
+    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'D') {
+        dmg *= 1.1f;
+    }
+    return std::round(dmg);
 }
 

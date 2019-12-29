@@ -46,6 +46,8 @@ private:
     // Queue of moves
     std::queue<char> mMovesBuffer;
 
+    std::string mInputPath;
+
     // Number of rounds.
     int mRounds;
 

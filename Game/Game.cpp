@@ -9,7 +9,7 @@
 #include "Characters/Heroes/HeroFactory.hpp"
 
 Game::Game(const std::string & inputPath) {
-
+    mInputPath = inputPath;
     try {
         std::ifstream in(inputPath);
 
@@ -128,6 +128,8 @@ void Game::start() {
 }
 
 void Game::finish(const std::string& output) {
+    std::cout << "Output for test : " << mInputPath << "\n";
+//    std::cout << mMovesBuffer.size();
     try {
         std::ofstream of(output);
 
@@ -231,16 +233,18 @@ void Game::battle(Hero& fighter, Hero& enemy, int round) {
 
         // Verificam daca cineva a fost ucis in decursul luptei
         if (fighter.mCurrentHp == 0) {
+            std::cout <<"\n"<< HeroFactory::getHeroType(enemy) << " KILLED " << HeroFactory::getHeroType(fighter) << "\n\n";
             mXpBuffer.push({enemy, HeroFactory::countXP(enemy, fighter)});
         }
         if (enemy.mCurrentHp == 0) {
+            std::cout <<"\n"<< HeroFactory::getHeroType(fighter) << " KILLED " << HeroFactory::getHeroType(enemy) << "\n\n";
             mXpBuffer.push( {fighter, HeroFactory::countXP(fighter, enemy)} );
         }
     }
 }
 
 void Game::heroStats() {
-    std::cout << "| Type\t\t|X : Y \t| iD |  HP \t |  Lvl\t | Effect|  Dmg\t |  Tms\t|\n";
+    std::cout << "| Type\t\t|X : Y \t| iD |  HP \t |  Lvl\t |   Xp\t | Effect|  Dmg\t |  Tms\t|\n";
     for (auto &mHero : mHeroes) {
         if (dynamic_cast<Rogue *>(mHero)) {
             auto *rog = dynamic_cast<Rogue *>(mHero);

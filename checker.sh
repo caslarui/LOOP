@@ -59,7 +59,7 @@ function calculateScore
 
 	GOOD_TESTS=`echo "scale=2; $GOOD_TESTS" | bc -l`
 
-	echo -ne "\n-$GOOD_TESTS failed tests"
+	echo -ne "\n-$GOOD_TESTS failed tests\n"
 }
 
 ## MAIN EXECUTION ##

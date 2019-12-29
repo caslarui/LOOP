@@ -25,6 +25,13 @@ float Paralysis::hit(Hero &enemy, int round) {
 
         std::cout << "Paralysis base damage : " << dmg << "\n";
 
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+            land = 1.15f;
+            round = 6;
+            std::cout << "Land modifier : " << land << "\n";
+            dmg *= land;
+        }
+
         if (dynamic_cast<Knight*>(&enemy)) {
             race = 0.8f;
         }
@@ -41,13 +48,6 @@ float Paralysis::hit(Hero &enemy, int round) {
         std::cout << "Race modifier : " << race << "\n";
         dmg *= race;
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
-            land = 1.15f;
-            round = 6;
-            std::cout << "Land modifier : " << land << "\n";
-            dmg *= land;
-        }
-
         dmg = std::round(dmg);
         std::cout << "Second Skill Total Damage : " << dmg << "\n\n";
         enemy.mEffect.setEffect(Dmg, static_cast<int>(dmg), round);
@@ -61,5 +61,8 @@ void Paralysis::upgradeAbility() {
 }
 
 float Paralysis::getBaseDmg(Hero &enemy, int round) {
-    return baseDmg;
+    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+        return std::round(baseDmg * 1.15f);
+    }
+    return std::round(baseDmg);
 }

@@ -18,7 +18,7 @@ float Knight::attack(Hero &enemy, int round) {
 
 std::ostream &operator<<(std::ostream& os, Knight& other) {
     os << "Knight \t\t{" << other.mCoords.getMx() << " : " << other.mCoords.getMy() << "} | [" << other.isDead()
-       << " | " << other.mCurrentHp << "\t | " << other.mLvl << "\t | " << other.mEffect.getMType() <<
+       << " | " << other.mCurrentHp << "\t | " << other.mLvl << "\t | "<< other.mXp << "\t | " << other.mEffect.getMType() <<
        "\t | " << other.mEffect.getEffectDmg() << "\t | " << other.mEffect.getMTime() << "\t]\n";
     return os;
 }
