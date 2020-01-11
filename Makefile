@@ -204,33 +204,6 @@ Game/Characters/Attributes/Stats.cpp.s:
 	$(MAKE) -f CMakeFiles/LOOP.dir/build.make CMakeFiles/LOOP.dir/Game/Characters/Attributes/Stats.cpp.s
 .PHONY : Game/Characters/Attributes/Stats.cpp.s
 
-Game/Characters/Attributes/Strategy.o: Game/Characters/Attributes/Strategy.cpp.o
-
-.PHONY : Game/Characters/Attributes/Strategy.o
-
-# target to build an object file
-Game/Characters/Attributes/Strategy.cpp.o:
-	$(MAKE) -f CMakeFiles/LOOP.dir/build.make CMakeFiles/LOOP.dir/Game/Characters/Attributes/Strategy.cpp.o
-.PHONY : Game/Characters/Attributes/Strategy.cpp.o
-
-Game/Characters/Attributes/Strategy.i: Game/Characters/Attributes/Strategy.cpp.i
-
-.PHONY : Game/Characters/Attributes/Strategy.i
-
-# target to preprocess a source file
-Game/Characters/Attributes/Strategy.cpp.i:
-	$(MAKE) -f CMakeFiles/LOOP.dir/build.make CMakeFiles/LOOP.dir/Game/Characters/Attributes/Strategy.cpp.i
-.PHONY : Game/Characters/Attributes/Strategy.cpp.i
-
-Game/Characters/Attributes/Strategy.s: Game/Characters/Attributes/Strategy.cpp.s
-
-.PHONY : Game/Characters/Attributes/Strategy.s
-
-# target to generate assembly for a file
-Game/Characters/Attributes/Strategy.cpp.s:
-	$(MAKE) -f CMakeFiles/LOOP.dir/build.make CMakeFiles/LOOP.dir/Game/Characters/Attributes/Strategy.cpp.s
-.PHONY : Game/Characters/Attributes/Strategy.cpp.s
-
 Game/Characters/Heroes/Ability.o: Game/Characters/Heroes/Ability.cpp.o
 
 .PHONY : Game/Characters/Heroes/Ability.o
@@ -735,9 +708,6 @@ help:
 	@echo "... Game/Characters/Attributes/Stats.o"
 	@echo "... Game/Characters/Attributes/Stats.i"
 	@echo "... Game/Characters/Attributes/Stats.s"
-	@echo "... Game/Characters/Attributes/Strategy.o"
-	@echo "... Game/Characters/Attributes/Strategy.i"
-	@echo "... Game/Characters/Attributes/Strategy.s"
 	@echo "... Game/Characters/Heroes/Ability.o"
 	@echo "... Game/Characters/Heroes/Ability.i"
 	@echo "... Game/Characters/Heroes/Ability.s"

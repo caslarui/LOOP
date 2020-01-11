@@ -8,12 +8,14 @@
 
 #include <ostream>
 #include "../Hero.hpp"
+#include "../../../Game.hpp"
 
 class Pyromancer : public Hero {
 public:
     Pyromancer(int, int);
 
     float attack(Hero &, int) override;
+
     friend std::ostream&operator<<(std::ostream&, Pyromancer&);
 };
 

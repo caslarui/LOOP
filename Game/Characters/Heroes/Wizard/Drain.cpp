@@ -9,7 +9,6 @@
 #include "../Knight/Knight.hpp"
 #include "../Pyromancer/Pyromancer.hpp"
 #include "Wizard.hpp"
-#include "../../../Map/Map.hpp"
 
 Drain::Drain(Hero& owner) : Ability(owner) {
     basePct = 0.20f;
@@ -35,24 +34,24 @@ float Drain::hit(Hero &enemy, int round) {
             race = 1.05f;
         }
 
-        std::cout << "Drain Base Percent : " << basePercent << std::endl;
-        std::cout << "Race modifier : " << race << "\n";
+        assert(std::cout << "Drain Base Percent : " << basePercent << std::endl;)
+        assert(std::cout << "Race modifier : " << race << "\n";)
         basePercent *= race;
 
         float dmg = basePercent * std::min(static_cast<float>(enemy.mMaxHp) * 0.3f, static_cast<float>(enemy.mCurrentHp));
 
-        std::cout << "Drain Base Damage : " <<  basePercent << " x " << std::min(static_cast<float>(enemy.mMaxHp) * 0.3f,
-                static_cast<float>(enemy.mCurrentHp)) << " = "<< dmg << std::endl;
+        assert(std::cout << "Drain Base Damage : " <<  basePercent << " x " << std::min(static_cast<float>(enemy.mMaxHp) * 0.3f,
+                static_cast<float>(enemy.mCurrentHp)) << " = "<< dmg << std::endl;)
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'D') {
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'D') {
             land = 1.1f;
-            std::cout << "Land modifier : " << land << "\n";
+            assert(std::cout << "Land modifier : " << land << "\n";)
             dmg *= land;
         }
 
         dmg = std::round(dmg);
 
-        std::cout << "Drain Total Damage : " << dmg << "\n\n";
+        assert(std::cout << "Drain Total Damage : " << dmg << "\n\n";)
 
         return dmg;
     }
@@ -79,7 +78,7 @@ float Drain::getBaseDmg(Hero &enemy, int round) {
         basePercent *= 1.05f;
     }
     dmg = std::roundf(basePercent * std::min(static_cast<float>(enemy.mMaxHp) * 0.3f, static_cast<float>(enemy.mCurrentHp)));
-    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'D') {
+    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'D') {
         dmg *= 1.1f;
     }
     return std::round(dmg);

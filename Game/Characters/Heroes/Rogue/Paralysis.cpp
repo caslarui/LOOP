@@ -9,7 +9,6 @@
 #include "Rogue.hpp"
 #include "../Pyromancer/Pyromancer.hpp"
 #include "../Wizard/Wizard.hpp"
-#include "../../../Map/Map.hpp"
 
 Paralysis::Paralysis(Hero& owner) : Ability(owner) {
     baseDmg = 40.0f;
@@ -23,12 +22,12 @@ float Paralysis::hit(Hero &enemy, int round) {
         float land = 0;
         round = 3;
 
-        std::cout << "Paralysis base damage : " << dmg << "\n";
+        assert(std::cout << "Paralysis base damage : " << dmg << "\n";)
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
             land = 1.15f;
             round = 6;
-            std::cout << "Land modifier : " << land << "\n";
+            assert(std::cout << "Land modifier : " << land << "\n";)
             dmg *= land;
         }
 
@@ -45,11 +44,11 @@ float Paralysis::hit(Hero &enemy, int round) {
             race = 1.25f;
         }
 
-        std::cout << "Race modifier : " << race << "\n";
+        assert(std::cout << "Race modifier : " << race << "\n";)
         dmg *= race;
 
         dmg = std::round(dmg);
-        std::cout << "Second Skill Total Damage : " << dmg << "\n\n";
+        assert(std::cout << "Second Skill Total Damage : " << dmg << "\n\n";)
         enemy.mEffect.setEffect(Dmg, static_cast<int>(dmg), round);
         return dmg;
     }
@@ -61,7 +60,7 @@ void Paralysis::upgradeAbility() {
 }
 
 float Paralysis::getBaseDmg(Hero &enemy, int round) {
-    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
         return std::round(baseDmg * 1.15f);
     }
     return std::round(baseDmg);

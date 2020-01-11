@@ -11,9 +11,10 @@
 class Drain : public Ability {
 public:
     explicit Drain(Hero&);
+
     float hit(Hero &enemy, int round) override ;
-    void upgradeAbility() override ;
     float getBaseDmg(Hero &, int) override ;
+    void upgradeAbility() override ;
 
 
 private:

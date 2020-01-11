@@ -7,6 +7,7 @@
 
 #include <ostream>
 #include "../Hero.hpp"
+#include "../../../Game.hpp"
 
 class Wizard : public Hero {
 public:

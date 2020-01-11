@@ -13,7 +13,7 @@ class Map {
 public:
     int     getMm() const;
     int     getMn() const;
-    static Map *   getInstance();
+    static Map *getInstance();
     const std::vector<std::vector<char>> &getMMap() const;
 
     void setMMap(std::vector<std::vector<char>>);
@@ -21,12 +21,12 @@ public:
     void setMn(int);
 
 private:
-    static Map* instance;
     Map();
 
-    std::vector<std::vector<char>>  mMap;
+    static Map *instance;
     int     mM;
     int     mN;
+    std::vector<std::vector<char>>  mMap;
 };
 
 

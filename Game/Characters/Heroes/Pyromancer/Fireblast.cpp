@@ -9,7 +9,6 @@
 #include "../Rogue/Rogue.hpp"
 #include "Pyromancer.hpp"
 #include "../Wizard/Wizard.hpp"
-#include "../../../Map/Map.hpp"
 
 Fireblast::Fireblast(Hero& owner) : Ability(owner) {
     baseDmg = 350.0f;
@@ -22,11 +21,11 @@ float Fireblast::hit(Hero &enemy, int round) {
         float race = 0;
         float land = 0;
 
-        std::cout << "Fireblast Base Damage : " << dmg << "\n";
+        assert(std::cout << "Fireblast Base Damage : " << dmg << "\n";)
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'V') {
             land = 1.25f;
-            std::cout << "Land Modifier : " << land << "\n";
+            assert(std::cout << "Land Modifier : " << land << "\n";)
             dmg *= land;
         }
 
@@ -43,11 +42,11 @@ float Fireblast::hit(Hero &enemy, int round) {
             race = 1.05f;
         }
 
-        std::cout << "Race Modifier : " << race << "\n";
+        assert(std::cout << "Race Modifier : " << race << "\n";)
         dmg *= race;
 
         dmg = std::roundf(dmg);
-        std::cout << "First Skill Total Damage : " << dmg << "\n\n";
+        assert(std::cout << "First Skill Total Damage : " << dmg << "\n\n";)
         return dmg;
     }
     return 0;
@@ -58,7 +57,7 @@ void Fireblast::upgradeAbility() {
 }
 
 float Fireblast::getBaseDmg(Hero &enemy, int round) {
-    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
+    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'V') {
         return std::round(baseDmg * 1.25f);
     }
     return std::round(baseDmg);

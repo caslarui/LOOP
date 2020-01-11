@@ -8,6 +8,7 @@
 
 #include <ostream>
 #include "../Hero.hpp"
+#include "../../../Game.hpp"
 
 class Knight : public Hero {
 public:

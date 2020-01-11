@@ -22,10 +22,10 @@ bool Effects::isDisabled() {
 
 void Effects::decreaseTime() {
     if (mType != None) {
-        if (mTime >= 0) {
+        if (mTime > 0) {
             --mTime;
         }
-        if ( mTime < 0) {
+        if ( mTime <= 0) {
             setEffect();
         }
     }

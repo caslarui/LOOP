@@ -11,13 +11,14 @@
 class Backstab : public Ability{
 public:
     explicit Backstab(Hero&);
+
     float hit(Hero&, int) override;
-    void upgradeAbility() override;
     float getBaseDmg(Hero &, int) override ;
+    void upgradeAbility() override;
 
 private:
     float baseDmg;
-    constexpr const static float baseDmgIncrease = 20.0f;
+    constexpr static float baseDmgIncrease = 20.0f;
 };
 
 

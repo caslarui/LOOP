@@ -8,7 +8,6 @@
 #include "../Rogue/Rogue.hpp"
 #include "../Knight/Knight.hpp"
 #include "../Pyromancer/Pyromancer.hpp"
-#include "../../../Map/Map.hpp"
 #include "Wizard.hpp"
 
 Deflect::Deflect(Hero& owner) : Ability(owner) {
@@ -28,18 +27,18 @@ float Deflect::hit(Hero &enemy, int round) {
                 dmg += enemy.mAbility[i]->getBaseDmg(*wizard, round);
             }
 
-            std::cout << "*Total Damage From Enemy : " << dmg << "\n\n";
-            std::cout << "Deflect Dmg Pct : " << basePct << "\n";
-            std::cout << "Deflect Dmg : " << dmg << " x " << basePct << " = ";
+            assert(std::cout << "*Total Damage From Enemy : " << dmg << "\n\n";)
+            assert(std::cout << "Deflect Dmg Pct : " << basePct << "\n";)
+            assert(std::cout << "Deflect Dmg : " << dmg << " x " << basePct << " = ";)
 
             dmg *= basePct;
 
-            std::cout << dmg << "\n";
+            assert(std::cout << dmg << "\n";)
 
-            if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'D') {
+            if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'D') {
                 land = 1.1f;
                 dmg *= land;
-                std::cout << "Land modifier : " << land << "\n";
+                assert(std::cout << "Land modifier : " << land << "\n";)
             }
 
             if (dynamic_cast<Rogue*>(&enemy)) {
@@ -52,11 +51,11 @@ float Deflect::hit(Hero &enemy, int round) {
                 race = 1.3f;
             }
 
-            std::cout << "Race modifier : " << race << "\n";
+            assert(std::cout << "Race modifier : " << race << "\n";)
             dmg *= race;
 
             dmg = std::round(dmg);
-            std::cout << "Second Skill Total Damage : " << dmg << "\n\n";
+            assert(std::cout << "Second Skill Total Damage : " << dmg << "\n\n";)
             return dmg;
         }
     }

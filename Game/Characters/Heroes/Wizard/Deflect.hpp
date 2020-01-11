@@ -11,9 +11,10 @@
 class Deflect : public Ability {
 public:
     explicit Deflect(Hero&);
+
     float hit(Hero &enemy, int round) override ;
-    void upgradeAbility() override ;
     float getBaseDmg(Hero &, int) override ;
+    void upgradeAbility() override ;
 
 private:
     float basePct;

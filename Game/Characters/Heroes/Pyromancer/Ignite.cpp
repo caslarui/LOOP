@@ -9,7 +9,6 @@
 #include "../Knight/Knight.hpp"
 #include "Pyromancer.hpp"
 #include "../Wizard/Wizard.hpp"
-#include "../../../Map/Map.hpp"
 
 Ignite::Ignite(Hero& owner) : Ability(owner) {
     baseDmg = 150.0f;
@@ -25,12 +24,12 @@ float Ignite::hit(Hero &enemy, int round) {
         float land = 0;
         round = 2;
 
-        std::cout << "Ignite Base Damage : " << dmg << "\n";
-        std::cout << "Ignite Effect Base Damage : " << effect << "\n";
+        assert(std::cout << "Ignite Base Damage : " << dmg << "\n";)
+        assert(std::cout << "Ignite Effect Base Damage : " << effect << "\n";)
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'V') {
             land = 1.25f;
-            std::cout << "Land Modifier : " << land << "\n";
+            assert(std::cout << "Land Modifier : " << land << "\n";)
             dmg *= land;
             effect *= land;
         }
@@ -48,14 +47,13 @@ float Ignite::hit(Hero &enemy, int round) {
             race = 1.05f;
         }
 
-        std::cout << "Race Modifier : " << race << "\n";
+        assert(std::cout << "Race Modifier : " << race << "\n";)
         dmg *= race;
         effect *= race;
 
-//        dmg += effect;
         dmg = std::round(dmg);
         enemy.mEffect.setEffect(Dmg, static_cast<int>(effect), round);
-        std::cout << "Second Skill Total Damage : " << dmg << "\n\n ";
+        assert(std::cout << "Second Skill Total Damage : " << dmg << "\n\n ";)
         return dmg;
     }
     return 0;
@@ -67,7 +65,7 @@ void Ignite::upgradeAbility() {
 }
 
 float Ignite::getBaseDmg(Hero &enemy, int round) {
-    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'V') {
+    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'V') {
         return std::round(baseDmg * 1.25f);
     }
     return std::round(baseDmg);

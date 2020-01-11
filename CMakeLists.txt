@@ -9,7 +9,6 @@ set(TARGET_SRC
         Game/Characters/Heroes/Hero.cpp
         Game/Characters/Attributes/Coords.cpp
         Game/Characters/Attributes/Effects.cpp
-        Game/Characters/Attributes/Strategy.cpp
         Game/Characters/Attributes/Stats.cpp
         Game/Characters/Heroes/Ability.cpp
         Game/Characters/Heroes/Knight/Execute.cpp
@@ -30,7 +29,6 @@ set(TARGET_INC
         Game/Characters/Heroes/Hero.hpp
         Game/Characters/Attributes/Coords.hpp
         Game/Characters/Attributes/Effects.hpp
-        Game/Characters/Attributes/Strategy.hpp
         Game/Characters/Attributes/Stats.hpp
         Game/Characters/Heroes/Ability.hpp
         Game/Characters/Heroes/Knight/Execute.hpp

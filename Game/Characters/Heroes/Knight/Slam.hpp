@@ -10,10 +10,12 @@
 
 class Slam : public Ability{
 public:
+
     explicit Slam(Hero&);
+
     float hit(Hero&, int) override;
-    void upgradeAbility() override;
     float getBaseDmg(Hero &, int) override ;
+    void upgradeAbility() override;
 
 
 private:

@@ -3,16 +3,17 @@
 //
 
 #include "Knight.hpp"
-#include "../HeroFactory.hpp"
-#include "../../../Game.hpp"
 
 Knight::Knight(int _x, int _y) : Hero(_x, _y) {}
 
 float Knight::attack(Hero &enemy, int round) {
+
     float dmg = 0;
+
     for (int i = 0; i < 2; ++i) {
         dmg += mAbility[i]->hit(enemy, round);
     }
+
     return dmg;
 }
 

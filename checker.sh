@@ -55,21 +55,21 @@ function checkTest
 
 function calculateScore
 {
-	GOOD_TESTS=$((60-GOOD_TESTS*6/10))
+	GOOD_TESTS=$((47-GOOD_TESTS*6/10))
 
 	GOOD_TESTS=`echo "scale=2; $GOOD_TESTS" | bc -l`
 
-	echo -ne "\n-$GOOD_TESTS failed tests\n"
+	echo -ne "\n-$GOOD_TESTS failed tests\n\n"
 }
 
 ## MAIN EXECUTION ##
 #cleanHomework
 compileHomework
 
-checkTest "3x3"
-checkTest "4x4"
-checkTest "5x5"
-checkTest "dense"
+# shellcheck disable=SC2028
+echo -ne "\n"
+printf "\033[31m************Tests************\033[32m\n\n"
+
 checkTest "fightKKD"
 checkTest "fightKKL"
 checkTest "fightKKV"
@@ -134,6 +134,9 @@ checkTest "fightWWD"
 checkTest "fightWWL"
 checkTest "fightWWV"
 checkTest "fightWWW"
+checkTest "3x3"
+checkTest "4x4"
+checkTest "5x5"
 
 calculateScore
 

@@ -11,7 +11,6 @@
 #include "Ability.hpp"
 #include "../Attributes/Coords.hpp"
 #include "../Attributes/Effects.hpp"
-#include "../Attributes/Strategy.hpp"
 #include "../Attributes/Stats.hpp"
 
 class Hero : public Stats {
@@ -22,10 +21,8 @@ public:
     bool isDead() override;
     void setDead() override;
     const Coords &getMCoords() const;
-    void setStrategy(Strategy&);
 
     Coords mCoords;
-    Strategy* mStrategy;
     Effects mEffect;
     std::vector<Ability*> mAbility{2};
 };

@@ -9,7 +9,6 @@
 #include "Rogue.hpp"
 #include "../Pyromancer/Pyromancer.hpp"
 #include "../Wizard/Wizard.hpp"
-#include "../../../Map/Map.hpp"
 
 Backstab::Backstab(Hero& owner) : Ability(owner) {
     baseDmg = 200.0f;
@@ -22,17 +21,17 @@ float Backstab::hit(Hero &enemy, int round = 0) {
         float land = 0;
         float extra = 0;
 
-        std::cout << "Backstab base damage : " << dmg << "\n";
+        assert(std::cout << "Backstab base damage : " << dmg << "\n";)
         if (round % 3 == 0 &&
-                Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+                Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
             extra = 1.5f;
-            std::cout << "Critical modifier : " << extra << "\n";
+            assert(std::cout << "Critical modifier : " << extra << "\n";)
             dmg *= extra;
         }
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
             land = 1.15f;
-            std::cout << "Land modifier : " << land << "\n";
+            assert(std::cout << "Land modifier : " << land << "\n";)
             dmg *= land;
         }
 
@@ -49,11 +48,11 @@ float Backstab::hit(Hero &enemy, int round = 0) {
             race = 1.25f;
         }
 
-        std::cout << "Race modifier : " << race << "\n";
+        assert(std::cout << "Race modifier : " << race << "\n";)
         dmg *= race;
 
         dmg = std::round(dmg);
-        std::cout << "First Skill Total Damage : " << dmg << "\n\n ";
+        assert(std::cout << "First Skill Total Damage : " << dmg << "\n\n ";)
 
         return dmg;
     }
@@ -67,7 +66,7 @@ void Backstab::upgradeAbility() {
 float Backstab::getBaseDmg(Hero &enemy, int round) {
     float dmg = baseDmg;
     if (round % 3 == 0 &&
-        Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'W') {
+        Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
         dmg *= 1.5f;
         dmg *= 1.15f;
     }

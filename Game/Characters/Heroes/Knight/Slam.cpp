@@ -22,11 +22,11 @@ float Slam::hit(Hero &enemy, int round) {
         float race = 0;
         float land = 0;
 
-        std::cout << "Slam Base Damage : " << dmg << "\n";
+        assert(std::cout << "Slam Base Damage : " << dmg << "\n";)
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'L') {
+        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'L') {
             land = 1.15f;
-            std::cout << "Land Modifier : " << land << "\n";
+            assert(std::cout << "Land Modifier : " << land << "\n";)
             dmg *= land;
         }
 
@@ -43,13 +43,13 @@ float Slam::hit(Hero &enemy, int round) {
             race = 1.05f;
         }
 
-        std::cout << "Race Modifier : " << race << "\n";
+        assert(std::cout << "Race Modifier : " << race << "\n";)
         dmg *= race;
 
         dmg = std::round(dmg);
 
         enemy.mEffect.setEffect(Disable, 0, 1);
-        std::cout << "Second Skill Total Damage : " << dmg << "\n\n";
+        assert(std::cout << "Second Skill Total Damage : " << dmg << "\n\n";)
 
         return dmg;
     }
@@ -61,7 +61,7 @@ void Slam::upgradeAbility() {
 }
 
 float Slam::getBaseDmg(Hero &enemy, int round) {
-    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMx()] == 'L') {
+    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'L') {
         return std::round(baseDmg * 1.15f);
     }
     return std::round(baseDmg);

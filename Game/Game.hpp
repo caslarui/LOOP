@@ -11,7 +11,10 @@
 
 #include "Map/Map.hpp"
 #include "Characters/Heroes/Hero.hpp"
-#include "Characters/Angels/Angel.hpp"
+
+
+#define print(chr, times) for(int i = 0; i < times; ++i) std::cout << chr; std::cout<<std::endl;
+#define assert(msg) if (Game::onDebug) {msg}
 
 typedef struct Buffer {
     Hero* mHero = nullptr;
@@ -32,8 +35,7 @@ public:
     void finish(const std::string&);
     void update();
 
-    // Array where im saving a pointer to a Hero and the gained XP
-    std::queue<Buffer> mXpBuffer;
+    static bool onDebug;
 private:
 
     void heroStats();
@@ -48,8 +50,13 @@ private:
 
     std::string mInputPath;
 
+    // Array where im saving a pointer to a Hero and the gained XP
+    std::queue<Buffer> mXpBuffer;
+
     // Number of rounds.
     int mRounds;
+
+
 
 };
 

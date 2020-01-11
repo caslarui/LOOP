@@ -6,23 +6,22 @@
 #define LOOP_EFFECTS_HPP
 
 enum EffectTypes {
-    None = 0, Disable, Dmg, Respawn
+    None = 0, Disable, Dmg
 };
 
 class Effects {
 public:
+
     Effects();
     Effects(EffectTypes, int, int);
     bool isDisabled();
     bool hasEffect() const;
     void setEffect(EffectTypes, int, int);
     void decreaseTime();
-    int getEffectDmg();
     void clearEffects();
-
-    EffectTypes getMType() const;
-
+    int getEffectDmg();
     int getMTime() const;
+    EffectTypes getMType() const;
 
 private:
     EffectTypes mType;

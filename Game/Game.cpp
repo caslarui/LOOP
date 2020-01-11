@@ -2,11 +2,10 @@
 // Created by caslarui on 16.12.2019.
 //
 
-#define print(chr, times) for(int i = 0; i < times; ++i) std::cout << chr; std::cout<<std::endl;
-
-
 #include "Game.hpp"
 #include "Characters/Heroes/HeroFactory.hpp"
+
+bool Game::onDebug = false;
 
 Game::Game(const std::string & inputPath) {
     mInputPath = inputPath;
@@ -65,7 +64,9 @@ Game::Game(const std::string & inputPath) {
                 default: std::cerr << "Invalid Hero type : " << type << std::endl; exit(EXIT_FAILURE);
             }
         }
+
         in >> mRounds;
+
         for (int i = 0; i < mRounds; ++i) {
             for (int j = 0; j < _p; ++j) {
                 in >> type;
@@ -83,7 +84,7 @@ void Game::start() {
     char move;
 
     for (int round = 0; round < mRounds; round++) {
-        std::cout << "Round : " << round + 1 << std::endl << std::endl;
+        assert(std::cout << "Round : " << round + 1 << std::endl << std::endl;)
 
 
         // Efectuam miscarile juctorilor pe mapa
@@ -93,23 +94,21 @@ void Game::start() {
                 continue;
             }
             move = mMovesBuffer.front();
-            hero->mCoords.move(move);
             mMovesBuffer.pop();
+            hero->mCoords.move(move);
         }
 
         // Verificam daca exista efecte negative.
         for (auto& hero : mHeroes) {
-            if (hero->mEffect.isDisabled()) {
+            if (hero->mEffect.hasEffect()) {
                 hero->mEffect.decreaseTime();
-                continue;
-            }
-            if (hero->mEffect.hasEffect() && !hero->mEffect.isDisabled()) {
-                hero->takeDmg(hero->mEffect.getEffectDmg());
-                hero->mEffect.decreaseTime();
+                if (!hero->mEffect.isDisabled()) {
+                    hero->takeDmg(hero->mEffect.getEffectDmg());
+                }
             }
         }
 
-        heroStats();
+        assert(heroStats();)
 
         // Verificam daca s-a depistat vreo coliziune
         for (int i = 0; i < mHeroes.size(); ++i) {
@@ -122,14 +121,12 @@ void Game::start() {
 
         // Actualizam statusurile jucatorilor.
         update();
-        heroStats();
-        print("=",100)
+        assert(heroStats();print("=",100))
     }
 }
 
 void Game::finish(const std::string& output) {
     std::cout << "Output for test : " << mInputPath << "\n";
-//    std::cout << mMovesBuffer.size();
     try {
         std::ofstream of(output);
 
@@ -165,6 +162,11 @@ void Game::finish(const std::string& output) {
                       << hero->mCoords.getMy() << "\n";
         }
         of.close();
+        std::cout << "\n\nNo. of Heroes before memory cleaning : " << mHeroes.size() << "\n";
+        mHeroes.erase(mHeroes.begin(), mHeroes.end());
+        std::cout << "No. of Heroes after memory cleaning : " << mHeroes.size() << "\n";
+        std::cout << "No. of moves at the end of the game : " << mMovesBuffer.size() << "\n";
+        std::cout << "Size of xpBuffer  at the end of the game : " << mXpBuffer.size() << "\n";
     }
     catch (const std::exception & e) {
         std::cerr << e.what();
@@ -220,11 +222,11 @@ void Game::battle(Hero& fighter, Hero& enemy, int round) {
     if (!fighter.isDead() && !enemy.isDead()) {
 
         // Calculam dmg-ul pe care il va aplica primul luptator
-        printBattle(fighter, enemy);
+        assert(printBattle(fighter, enemy);)
         float fighterDmg = fighter.attack(enemy, round);
 
         // Calculam dmg-ul pe care il va aplica cel de-al doilea luptator
-        printBattle(enemy, fighter);
+        assert(printBattle(enemy, fighter);)
         float enemyDmg = enemy.attack(fighter, round);
 
         // In acelasi moment aplicam skilurile pe personaje
@@ -233,11 +235,13 @@ void Game::battle(Hero& fighter, Hero& enemy, int round) {
 
         // Verificam daca cineva a fost ucis in decursul luptei
         if (fighter.mCurrentHp == 0) {
-            std::cout <<"\n"<< HeroFactory::getHeroType(enemy) << " KILLED " << HeroFactory::getHeroType(fighter) << "\n\n";
+            assert(std::cout <<"\n"<< HeroFactory::getHeroType(enemy) << " KILLED "
+                                                                     << HeroFactory::getHeroType(fighter) << "\n\n";)
             mXpBuffer.push({enemy, HeroFactory::countXP(enemy, fighter)});
         }
         if (enemy.mCurrentHp == 0) {
-            std::cout <<"\n"<< HeroFactory::getHeroType(fighter) << " KILLED " << HeroFactory::getHeroType(enemy) << "\n\n";
+            assert(std::cout <<"\n"<< HeroFactory::getHeroType(fighter) << " KILLED "
+                                                                       << HeroFactory::getHeroType(enemy) << "\n\n";)
             mXpBuffer.push( {fighter, HeroFactory::countXP(fighter, enemy)} );
         }
     }
@@ -268,5 +272,6 @@ void Game::heroStats() {
 
 void Game::printBattle(Hero &fighter, Hero &enemy) {
     std::cout << "\n" << HeroFactory::getHeroType(fighter) << " is fighting with "
-              << HeroFactory::getHeroType(enemy) << std::endl;
+              << HeroFactory::getHeroType(enemy) << " on land : " <<
+              Map::getInstance()->getMMap()[fighter.getMCoords().getMx()][fighter.getMCoords().getMy()] << std::endl;
 }
