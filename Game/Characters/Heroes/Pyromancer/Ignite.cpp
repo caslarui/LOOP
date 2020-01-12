@@ -27,7 +27,7 @@ float Ignite::hit(Hero &enemy, int round) {
         assert(std::cout << "Ignite Base Damage : " << dmg << "\n";)
         assert(std::cout << "Ignite Effect Base Damage : " << effect << "\n";)
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'V') {
+        if (Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'V') {
             land = 1.25f;
             assert(std::cout << "Land Modifier : " << land << "\n";)
             dmg *= land;
@@ -65,7 +65,7 @@ void Ignite::upgradeAbility() {
 }
 
 float Ignite::getBaseDmg(Hero &enemy, int round) {
-    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'V') {
+    if (Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'V') {
         return std::round(baseDmg * 1.25f);
     }
     return std::round(baseDmg);

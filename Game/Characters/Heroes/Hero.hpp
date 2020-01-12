@@ -16,11 +16,13 @@
 class Hero : public Stats {
 public:
     Hero(int, int);
-    virtual float attack(Hero&, int) = 0;
+    virtual ~Hero();
     bool collide(const Hero&);
     bool isDead() override;
     void setDead() override;
     const Coords &getMCoords() const;
+
+    virtual float attack(Hero&, int) = 0;
 
     Coords mCoords;
     Effects mEffect;

@@ -24,7 +24,7 @@ float Slam::hit(Hero &enemy, int round) {
 
         assert(std::cout << "Slam Base Damage : " << dmg << "\n";)
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'L') {
+        if (Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'L') {
             land = 1.15f;
             assert(std::cout << "Land Modifier : " << land << "\n";)
             dmg *= land;
@@ -61,7 +61,7 @@ void Slam::upgradeAbility() {
 }
 
 float Slam::getBaseDmg(Hero &enemy, int round) {
-    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'L') {
+    if (Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'L') {
         return std::round(baseDmg * 1.15f);
     }
     return std::round(baseDmg);

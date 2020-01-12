@@ -23,13 +23,13 @@ float Backstab::hit(Hero &enemy, int round = 0) {
 
         assert(std::cout << "Backstab base damage : " << dmg << "\n";)
         if (round % 3 == 0 &&
-                Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
+                Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
             extra = 1.5f;
             assert(std::cout << "Critical modifier : " << extra << "\n";)
             dmg *= extra;
         }
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
+        if (Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
             land = 1.15f;
             assert(std::cout << "Land modifier : " << land << "\n";)
             dmg *= land;
@@ -66,7 +66,7 @@ void Backstab::upgradeAbility() {
 float Backstab::getBaseDmg(Hero &enemy, int round) {
     float dmg = baseDmg;
     if (round % 3 == 0 &&
-        Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
+        Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
         dmg *= 1.5f;
         dmg *= 1.15f;
     }

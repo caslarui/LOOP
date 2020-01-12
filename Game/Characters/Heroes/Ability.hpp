@@ -12,7 +12,7 @@ class Ability {
 public:
 
     explicit Ability(Hero &owner) : mOwner(&owner){};
-    ~Ability();
+    virtual ~Ability();
 
     virtual float hit(Hero & enemy, int round) = 0;
     virtual void upgradeAbility() = 0;

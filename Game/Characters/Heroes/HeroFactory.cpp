@@ -17,7 +17,7 @@
 #include "Wizard/Deflect.hpp"
 
 Knight* HeroFactory::getKnight(int x = -1, int y = -1) {
-    Knight *ret = new Knight(x, y);
+    auto *ret = new Knight(x, y);
     ret->mMaxHp = 900;
     ret->mHpInc = 80;
     ret->mCurrentHp = ret->mMaxHp;

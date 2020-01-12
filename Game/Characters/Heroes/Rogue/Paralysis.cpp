@@ -24,7 +24,7 @@ float Paralysis::hit(Hero &enemy, int round) {
 
         assert(std::cout << "Paralysis base damage : " << dmg << "\n";)
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
+        if (Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
             land = 1.15f;
             round = 6;
             assert(std::cout << "Land modifier : " << land << "\n";)
@@ -60,7 +60,7 @@ void Paralysis::upgradeAbility() {
 }
 
 float Paralysis::getBaseDmg(Hero &enemy, int round) {
-    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
+    if (Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'W') {
         return std::round(baseDmg * 1.15f);
     }
     return std::round(baseDmg);

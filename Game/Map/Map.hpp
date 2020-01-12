@@ -7,26 +7,27 @@
 
 #include <vector>
 #include <utility>
+#define MATRIX(type) std::vector<std::vector<type>>
 
 
 class Map {
 public:
-    int     getMm() const;
-    int     getMn() const;
-    static Map *getInstance();
-    const std::vector<std::vector<char>> &getMMap() const;
-
-    void setMMap(std::vector<std::vector<char>>);
+    void setMMap(MATRIX(char));
     void setMm(int);
     void setMn(int);
+    const MATRIX(char) &getMMap() const;
+
+    int     getMm() const;
+    int     getMn() const;
+    static Map &getInstance();
 
 private:
     Map();
+//    ~Map();
 
-    static Map *instance;
     int     mM;
     int     mN;
-    std::vector<std::vector<char>>  mMap;
+    MATRIX(char)  mMap;
 };
 
 

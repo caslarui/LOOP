@@ -9,6 +9,11 @@
 #include "../Pyromancer/Pyromancer.hpp"
 #include "../Wizard/Wizard.hpp"
 
+Execute::Execute(Hero& owner) : Ability(owner) {
+    baseDmg = 200.0f;
+    hpLimit = 0.2f;
+}
+
 float Execute::hit(Hero &enemy, int round) {
     if (!enemy.isDead()) {
 
@@ -28,7 +33,7 @@ float Execute::hit(Hero &enemy, int round) {
 
         assert(std::cout << "Execute Base Damage : " << dmg << "\n";)
 
-        if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'L') {
+        if (Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'L') {
             land = 1.15f;
             assert(std::cout << "Land Modifier : " << land << "\n";)
             dmg *= land;
@@ -62,16 +67,11 @@ void Execute::upgradeAbility() {
     }
 }
 
-Execute::Execute(Hero& owner) : Ability(owner) {
-    baseDmg = 200.0f;
-    hpLimit = 0.2f;
-}
-
 float Execute::getBaseDmg(Hero &enemy, int round) {
     if (hpLimit * static_cast<float>(enemy.mMaxHp) > static_cast<float>(enemy.mCurrentHp)) {
         return static_cast<float>(enemy.mCurrentHp);
     }
-    if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'L') {
+    if (Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'L') {
         return std::round(baseDmg * 1.15f);
     }
     return std::round(baseDmg);

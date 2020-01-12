@@ -5,12 +5,10 @@
 #include "Map.hpp"
 
 
-Map* Map::instance = nullptr;
+//Map* Map::instance = nullptr;
 
-Map * Map::getInstance() {
-    if (instance == nullptr) {
-        instance = new Map();
-    }
+Map &Map::getInstance() {
+    static Map instance;
     return instance;
 }
 
@@ -32,10 +30,15 @@ void Map::setMn(int _n) {
 
 Map::Map() {}
 
-void Map::setMMap(std::vector<std::vector<char>> _map) {
+void Map::setMMap(MATRIX(char) _map) {
     Map::mMap = std::move(_map);
 }
 
-const std::vector<std::vector<char>> &Map::getMMap() const {
+const MATRIX(char) &Map::getMMap() const {
     return mMap;
 }
+
+//Map::~Map() {
+//    delete instance;
+//    instance = nullptr;
+//}

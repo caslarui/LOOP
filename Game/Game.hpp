@@ -56,8 +56,6 @@ private:
     // Number of rounds.
     int mRounds;
 
-
-
 };
 
 

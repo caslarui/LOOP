@@ -21,13 +21,13 @@ Game::Game(const std::string & inputPath) {
         // Citim N din fisierul de input
         in >> _n;
         // Setam in clasa singleton N-ul
-        Map::getInstance()->setMn(_n);
+        Map::getInstance().setMn(_n);
 
         // Citim M din fisierul de input
         int _m;
         in >> _m;
         // Setam in clasa singleton M-ul
-        Map::getInstance()->setMm(_m);
+        Map::getInstance().setMm(_m);
 
         // Initializam un obiect temporar pentru harta
         std::vector<std::vector<char>> tmp(_n, std::vector<char>(_m));
@@ -42,7 +42,7 @@ Game::Game(const std::string & inputPath) {
         }
 
         // Copiem din obiectul temporar in cel global
-        Map::getInstance()->setMMap(tmp);
+        Map::getInstance().setMMap(tmp);
         // Stergem informatia din vectorul temporar.
         tmp.erase(tmp.begin(), tmp.end());
 
@@ -163,6 +163,9 @@ void Game::finish(const std::string& output) {
         }
         of.close();
         std::cout << "\n\nNo. of Heroes before memory cleaning : " << mHeroes.size() << "\n";
+        for (auto & mHero : mHeroes) {
+            delete mHero;
+        }
         mHeroes.erase(mHeroes.begin(), mHeroes.end());
         std::cout << "No. of Heroes after memory cleaning : " << mHeroes.size() << "\n";
         std::cout << "No. of moves at the end of the game : " << mMovesBuffer.size() << "\n";
@@ -273,5 +276,5 @@ void Game::heroStats() {
 void Game::printBattle(Hero &fighter, Hero &enemy) {
     std::cout << "\n" << HeroFactory::getHeroType(fighter) << " is fighting with "
               << HeroFactory::getHeroType(enemy) << " on land : " <<
-              Map::getInstance()->getMMap()[fighter.getMCoords().getMx()][fighter.getMCoords().getMy()] << std::endl;
+              Map::getInstance().getMMap()[fighter.getMCoords().getMx()][fighter.getMCoords().getMy()] << std::endl;
 }

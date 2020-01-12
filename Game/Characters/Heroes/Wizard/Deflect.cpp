@@ -35,7 +35,7 @@ float Deflect::hit(Hero &enemy, int round) {
 
             assert(std::cout << dmg << "\n";)
 
-            if (Map::getInstance()->getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'D') {
+            if (Map::getInstance().getMMap()[enemy.getMCoords().getMx()][enemy.getMCoords().getMy()] == 'D') {
                 land = 1.1f;
                 dmg *= land;
                 assert(std::cout << "Land modifier : " << land << "\n";)
